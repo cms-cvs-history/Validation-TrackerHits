@@ -5,7 +5,7 @@ echo "************************************************"
 
 setenv MACRODIR $PWD/macro
 setenv REFDIR $PWD/refHisto/muon
-setenv ROOTFile_test TSimHitMuon_$i.root
+setenv ROOTFile_test SimHitMuon_$i.root
 
 setenv ROOTFile_ref  $REFDIR/eloss_ref_$1.root
 if ( ! -e plots ) mkdir plots

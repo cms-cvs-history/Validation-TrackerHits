@@ -1,7 +1,7 @@
 #! /bin/csh
 
 #setenv DATADIR /uscms_data/d1/elis/data4/CMSSW_0_6_0_pre3/src/IOMC/ParticleGuns/test
-setenv DATADIR /uscms_data/d1/elis/data4/CMSSW_0_6_0_pre3/src/Validation/TrackerHits/data/
+setenv DATADIR $PWD/data
 setenv ROOTFile simhitoutput.root
  
 eval `scramv1 ru -csh`
