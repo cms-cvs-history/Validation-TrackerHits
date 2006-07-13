@@ -11,7 +11,7 @@ TH1F *tst[nsys];
 char filename[] ="$ROOTFile_test";     // The Name of Root File.
 //char filename[] ="SimHitMuon_1.root";     // The Name of Root File.
 char treename[] ="Events";            // The Name of Tree.
-TString brnchname = "PTrackerSimHit_thp_TrkHits.obj";
+TString brnchname = "PTrackerSimHit_thp_TrkHits_TrackerHits.obj";
 TBranch *srcbrnch;
 
 // Reference file
@@ -22,10 +22,10 @@ TFile * rfile;
 
 // systems 
 const char* si[] = {"_1","_2","_3","_4","_5","_6"};
-const char *SysName[] = {"TIB","TOB","TID","TEC","PIB","PEC"};
+const char *SysName[] = {"TIB","TOB","TID","TEC","BPIX","FPIX"};
 // limits
-const float dx_high[] = {1.0, 1.0, 1.0, 1.0, 1.0, 1.0};
-const float dy_high[] = {1.0, 1.0, 1.0, 1.0, 1.0, 1.0};
+const float dx_high[] = {0.03, 0.03, 0.02, 0.03, 0.03, 0.03};
+const float dy_high[] = {0.03, 0.03, 0.02, 0.03, 0.03, 0.03};
 const float dz_high[] = {0.05, 0.06, 0.05, 0.06, 0.05, 0.05};
 const float lx_high[] = {3.2, 5.0, 5.5, 6.2, 0.85, 0.4};   
 const float ly_high[] = {6.0, 10., 5.6, 10.5, 3.4, 0.42};
@@ -213,7 +213,7 @@ void Plot(string name, string stype, int scale) {
   tx->Draw("same");
 //  gPad->RedrawAxis();
  }
- string strips = "pos_" + name + "_" + stype + "_" + range + "_si.eps";
+ string strips = "pos_" + name + "_" + stype + "_" + range + "_st.eps";
  string pixel  = "pos_" + name + "_" + stype + "_" + range + "_px.eps";
  SiTrk->Print(strips.c_str());
  PxTrk->Print(pixel.c_str());

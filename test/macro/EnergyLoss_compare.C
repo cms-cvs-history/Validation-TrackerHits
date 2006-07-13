@@ -52,7 +52,8 @@ void EnergyLoss_compare(int arg)
  char filename[] ="$ROOTFile_test";     // The Name of Root File.
 // char filename[] ="SimHitMuon_0-0.5.root";     // The Name of Root File.
  char treename[] ="Events";            // The Name of Tree.
- TString brnchname = "PTrackerSimHit_thp_TrkHits.obj";
+# TString brnchname = "PTrackerSimHit_thp_TrkHits.obj";
+ TString brnchname = "PTrackerSimHit_thp_TrkHits_TrackerHits.obj";
 
  gROOT ->Reset();
  gStyle->SetNdivisions(504,"XYZ");
@@ -86,14 +87,14 @@ void EnergyLoss_compare(int arg)
  int nhit;
  	
 ////// booking histograms
- const char *SysName[] = {"TIB","TOB","TID","TEC","PIB","PEC"};
+ const char *SysName[] = {"TIB","TOB","TID","TEC","BPIX","FPIX"};
  
  TH1F *eloss[6];
  char hname[10], htitle[40];  
  for(int i=0; i<6; i++) {
   sprintf (htitle,"Energy loss in %s", SysName[i]);
   sprintf (hname,"Eloss_%i",i+1);
-  eloss[i]  = new TH1F(hname, htitle, 10000 , 0.0 , 0.002*E2NEL);
+  eloss[i]  = new TH1F(hname, htitle, 10000 , 0.0 , 0.001*E2NEL);
   eloss[i]->SetXTitle("Hit Energy (GeV)");
  } 
 ////// end booking histograms
@@ -219,7 +220,7 @@ void EnergyLoss_compare(int arg)
   tx->SetTextSize(0.04);
   tx->Draw("same");
  }
- string tmp1 = "eloss_" + stat + "_" + range + "_si.eps";
+ string tmp1 = "eloss_" + stat + "_" + range + "_st.eps";
  string tmp2 = "eloss_" + stat + "_" + range + "_px.eps";
  SiTrk->Print(tmp1.c_str());
  PxTrk->Print(tmp2.c_str());

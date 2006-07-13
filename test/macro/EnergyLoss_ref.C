@@ -16,7 +16,7 @@ void EnergyLoss_ref(int k)
  char filename[] ="$ROOTFile";     // The Name of Root File.
 // char filename[] ="SimHitMuon_0-0.5.root";     // The Name of Root File.
  char treename[] ="Events";            // The Name of Tree.
- TString brnchname = "PTrackerSimHit_thp_TrkHits.obj";
+ TString brnchname = "PTrackerSimHit_thp_TrkHits_TrackerHits.obj";
 
  gROOT ->Reset();
  gStyle->SetNdivisions(504,"XYZ");
@@ -54,7 +54,7 @@ void EnergyLoss_ref(int k)
  int nprim;
  
 ////// booking histograms
- const char *SysName[] = {"TIB","TOB","TID","TEC","PIB","PEC"};
+ const char *SysName[] = {"TIB","TOB","TID","TEC","BPIX","FPIX"};
  
  TH1F *eloss[6];
  TH1F *heta;
@@ -63,7 +63,7 @@ void EnergyLoss_ref(int k)
  for(int i=0; i<6; i++) {
   sprintf (htitle,"Energy loss in %s", SysName[i]);
   sprintf (hname,"Eloss_%i",i+1);
-  eloss[i]  = new TH1F(hname, htitle, 10000 , 0.0 , 0.002*E2NEL);
+  eloss[i]  = new TH1F(hname, htitle, 10000 , 0.0 , 0.001*E2NEL);
   eloss[i]->SetXTitle("Hit Energy (GeV)");
  } 
 ////// end booking histograms
