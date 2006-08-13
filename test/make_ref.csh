@@ -10,6 +10,7 @@ foreach i (1 2 3 4 5 6 7 8 9 10 11 12)
  echo "===========> Validating Tracker Simhits with 15 GeV Muon eta ......."
  cp  ${DATADIR}/Muon_$i.root   testinput.root
  cmsRun runP_tracker.cfg
+# cp  SimHitMuon_$i.root simhitoutput.root  
  root -b -p -q  macro/EnergyLoss_ref.C\($i\)
 # cp  SimHitMuon_$i.root simhitoutput.root  
  root -b -p -q  macro/Position_ref.C\($i\)

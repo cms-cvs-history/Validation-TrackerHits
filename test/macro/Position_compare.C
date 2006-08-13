@@ -207,7 +207,7 @@ void Plot(string name, string stype, int scale) {
   tst[i+4]->Draw("pesame");
   if (stype == "KS") sprintf (prob,"KSprob  %2.3f",ks[i+4]);
   if (stype == "chi2") sprintf (prob,"chi2prob  %2.3f",ks[i+4]);
-  tx = new TLatex (xmin[i]*0.9,0.5*max,prob);
+  tx = new TLatex (xmin[i+4]*0.9,0.5*max,prob);
   tx->SetTextColor(1);
   tx->SetTextSize(0.04);
   tx->Draw("same");
