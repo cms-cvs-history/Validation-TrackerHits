@@ -260,7 +260,8 @@ for(int i=0; i<6; i++) {
   tst[i][j]->Draw("pesame");
   if (stype == "KS") sprintf (prob,"KSprob  %2.3f",ks[i][j]);
   if (stype == "chi2") sprintf (prob,"chi2prob  %2.3f",ks[i][j]);
-  tx = new TLatex (xmin[i]*0.9,0.5*max,prob);
+  if (xmin[i]<0.) tx = new TLatex (xmin[i]*0.9,0.9*max,prob);
+  if (xmin[i]>=0.) tx = new TLatex (xmin[i]+0.005,0.9*max,prob);
   tx->SetTextColor(1);
   tx->SetTextSize(0.04);
   tx->Draw("same");

@@ -168,7 +168,12 @@ void EnergyLoss_compare_all(int arg)
 	srcbrnch->GetEntry(ev);
    int ir = 0;   
     // get G4Track info
-   std::vector<PTrackerSimHit::Trk> G4Trk = TrkSimHits.getG4Trk();
+   int ntrack = TrkSimHits.getnG4Trk();
+   if (ntrack>0) std::vector<PTrackerSimHit::Trk> G4Trk = TrkSimHits.getG4Trk(); 
+   else {
+    cout << "No tracks are found associated with a hit!!!" << endl;
+   continue;
+   }
    if (G4Trk[0].eta>0.0 && G4Trk[0].eta<=0.5) ir = 1;
    if (G4Trk[0].eta>0.5 && G4Trk[0].eta<=1.0) ir = 2;
    if (G4Trk[0].eta>1.0 && G4Trk[0].eta<=1.5) ir = 3;

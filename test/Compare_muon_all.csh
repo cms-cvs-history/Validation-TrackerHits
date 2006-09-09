@@ -43,6 +43,6 @@ echo "************************************************"
 # /bin/mv pos*.eps plots/muon
 
  if ( ! -e plots/muon ) mkdir plots/muon
- /bin/mv pos*.eps plots/muon
-
+ /bin/mv pos*.eps     plots/muon
+ /bin/mv summary*.eps plots/muon
 
