@@ -179,6 +179,7 @@ void Position_compare_all(int arg2)
  hsum_px -> Draw();
  
  s->Print("summary_pos_KS.eps");
+ s->Print("summary_pos_KS.gif");
 }
 
 void test(int iopt, float *low, float *high, string stype)
@@ -268,8 +269,10 @@ for(int i=0; i<6; i++) {
 //  gPad->RedrawAxis();
  }
  
- string tmp = "pos_" + name + "_" + SysName[i] + "_" + stype + ".eps";
- Si->Print(tmp.c_str()); 
+ string tmp_eps = "pos_" + name + "_" + SysName[i] + "_" + stype + ".eps";
+ string tmp_gif = "pos_" + name + "_" + SysName[i] + "_" + stype + ".gif";
+ Si->Print(tmp_eps.c_str()); 
+ Si->Print(tmp_gif.c_str()); 
 }
  
 }
