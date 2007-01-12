@@ -11,7 +11,7 @@ TH1F *tst[nsys];
 char filename[] ="$ROOTFile_test";     // The Name of Root File.
 //char filename[] ="SimHitMuon_1.root";     // The Name of Root File.
 char treename[] ="Events";            // The Name of Tree.
-TString brnchname = "PTrackerSimHit_thp_TrkHits_TrackerHits.obj";
+TString brnchname = "PTrackerSimHit_trackerHitsValid_TrkHits_TrackerValidation.obj";
 TBranch *srcbrnch;
 
 // Reference file

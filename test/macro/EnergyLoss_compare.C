@@ -52,8 +52,7 @@ void EnergyLoss_compare(int arg)
  char filename[] ="$ROOTFile_test";     // The Name of Root File.
 // char filename[] ="SimHitMuon_0-0.5.root";     // The Name of Root File.
  char treename[] ="Events";            // The Name of Tree.
-# TString brnchname = "PTrackerSimHit_thp_TrkHits.obj";
- TString brnchname = "PTrackerSimHit_thp_TrkHits_TrackerHits.obj";
+ TString brnchname = "PTrackerSimHit_trackerHitsValid_TrkHits_TrackerValidation.obj";
 
  gROOT ->Reset();
  gStyle->SetNdivisions(504,"XYZ");

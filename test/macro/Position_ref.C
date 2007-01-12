@@ -13,7 +13,7 @@ void Position_ref(int k)
  char filename[] ="$ROOTFile";     // The Name of Root File.
 // char filename[] = "simhitoutput.root";     // The Name of Root File.
  char treename[] ="Events";            // The Name of Tree.
- TString brnchname = "PTrackerSimHit_thp_TrkHits_TrackerHits.obj";
+ TString brnchname = "PTrackerSimHit_trackerHitsValid_TrkHits_TrackerValidation.obj";
 
  gROOT ->Reset();
  gStyle->SetNdivisions(504,"XYZ");
