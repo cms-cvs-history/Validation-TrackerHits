@@ -110,10 +110,10 @@ void EnergyLoss_compare_all(int arg)
  PTrackerSimHit TrkSimHits;
  srcbrnch->SetAddress(&TrkSimHits);
  
- cout << "Setting branch address" << endl;
+ cout << "Setting branch address" << srcbrnch << endl;
  
- float de[1000];
- int ids[1000];
+ float de[1000000];
+ int ids[1000000];
  int nhit;
 ////// booking histograms
  const char *SysName[] = {"TIB","TOB","TID","TEC","BPIX","FPIX"};
@@ -122,12 +122,12 @@ void EnergyLoss_compare_all(int arg)
 
  TH1F *h1[12],*h2[12],*h3[12],*h4[12],*h5[12], *h6[12];
    	
- char hname1[30], htitle1[40];
- char hname2[30], htitle2[40];
- char hname3[30], htitle3[40];
- char hname4[30], htitle4[40];
- char hname5[30], htitle5[40];
- char hname6[30], htitle6[40];
+ char hname1[50], htitle1[80];
+ char hname2[50], htitle2[80];
+ char hname3[50], htitle3[80];
+ char hname4[50], htitle4[80];
+ char hname5[50], htitle5[80];
+ char hname6[50], htitle6[80];
 
  for(int i=0; i<12; i++) {
   sprintf (htitle1,"Energy loss in TIB %s", Region[i]);
@@ -165,6 +165,7 @@ void EnergyLoss_compare_all(int arg)
  cout << "[OVAL]: number of events in test file = " << entry << endl;
 
  for ( int ev = 1; ev <=entry; ev++) {
+//        cout << " ev " << ev << endl; 
 	srcbrnch->GetEntry(ev);
    int ir = 0;   
     // get G4Track info
@@ -179,13 +180,16 @@ void EnergyLoss_compare_all(int arg)
    if (G4Trk[0].eta>1.0 && G4Trk[0].eta<=1.5) ir = 3;
    if (G4Trk[0].eta>1.5 && G4Trk[0].eta<=2.0) ir = 4;
    if (G4Trk[0].eta>2.0 && G4Trk[0].eta<=2.5) ir = 5;
-   if (G4Trk[0].eta>2.5 && G4Trk[0].eta<=3.0) ir = 6;
+//   if (G4Trk[0].eta>2.5 && G4Trk[0].eta<=3.0) ir = 6;
+   if (G4Trk[0].eta>2.5) ir = 6;
+   
    if (G4Trk[0].eta>-0.5 && G4Trk[0].eta<=0.0) ir = 7;
    if (G4Trk[0].eta>-1.0 && G4Trk[0].eta<=-0.5) ir = 8;
    if (G4Trk[0].eta>-1.5 && G4Trk[0].eta<=-1.0) ir = 9;
    if (G4Trk[0].eta>-2.0 && G4Trk[0].eta<=-1.5) ir = 10;
    if (G4Trk[0].eta>-2.5 && G4Trk[0].eta<=-2.0) ir = 11;
-   if (G4Trk[0].eta>-3.0 && G4Trk[0].eta<=-2.5) ir = 12;
+//   if (G4Trk[0].eta>-3.0 && G4Trk[0].eta<=-2.5) ir = 12;
+   if (G4Trk[0].eta<=-2.5) ir = 12;
 //   cout << " eta = " << G4Trk[0].eta << " ir " << ir << endl; 
     	
 // get Strip Barrel info

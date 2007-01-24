@@ -356,7 +356,7 @@ for(int i=0; i<nsys; i++) {
 }
 void  FillTestHistos(int iopt) 
 {
- int ids[1000];
+ int ids[1000000];
  
  // set access to branch as proper object
  PTrackerSimHit TrkSimHits;
@@ -372,13 +372,13 @@ void  FillTestHistos(int iopt)
    if (G4Trk[0].eta>1.0 && G4Trk[0].eta<=1.5) ir = 3;
    if (G4Trk[0].eta>1.5 && G4Trk[0].eta<=2.0) ir = 4;
    if (G4Trk[0].eta>2.0 && G4Trk[0].eta<=2.5) ir = 5;
-   if (G4Trk[0].eta>2.5 && G4Trk[0].eta<=3.0) ir = 6;
+   if (G4Trk[0].eta>2.5) ir = 6;
    if (G4Trk[0].eta>-0.5 && G4Trk[0].eta<=0.0) ir = 7;
    if (G4Trk[0].eta>-1.0 && G4Trk[0].eta<=-0.5) ir = 8;
    if (G4Trk[0].eta>-1.5 && G4Trk[0].eta<=-1.0) ir = 9;
    if (G4Trk[0].eta>-2.0 && G4Trk[0].eta<=-1.5) ir = 10;
    if (G4Trk[0].eta>-2.5 && G4Trk[0].eta<=-2.0) ir = 11;
-   if (G4Trk[0].eta>-3.0 && G4Trk[0].eta<=-2.5) ir = 12;
+   if (G4Trk[0].eta<=-2.5) ir = 12;
     
 // get Strip Barrel info 
     std::vector<PTrackerSimHit::Hit> Hits = TrkSimHits.getHits();
