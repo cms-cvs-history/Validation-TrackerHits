@@ -49,7 +49,7 @@ void EnergyLoss_ref_all()
  cout << "Setting branch address" << endl;
 
  float de[1000];
- int ids[1000];
+ int ids[100000];
  int nhit;
  int nprim;
  
@@ -107,13 +107,13 @@ void EnergyLoss_ref_all()
    if (G4Trk[0].eta>1.0 && G4Trk[0].eta<=1.5) ir = 3;
    if (G4Trk[0].eta>1.5 && G4Trk[0].eta<=2.0) ir = 4;
    if (G4Trk[0].eta>2.0 && G4Trk[0].eta<=2.5) ir = 5;
-   if (G4Trk[0].eta>2.5 && G4Trk[0].eta<=3.0) ir = 6;
+   if (G4Trk[0].eta>2.5 ) ir = 6;
    if (G4Trk[0].eta>-0.5 && G4Trk[0].eta<=0.0) ir = 7;
    if (G4Trk[0].eta>-1.0 && G4Trk[0].eta<=-0.5) ir = 8;
    if (G4Trk[0].eta>-1.5 && G4Trk[0].eta<=-1.0) ir = 9;
    if (G4Trk[0].eta>-2.0 && G4Trk[0].eta<=-1.5) ir = 10;
    if (G4Trk[0].eta>-2.5 && G4Trk[0].eta<=-2.0) ir = 11;
-   if (G4Trk[0].eta>-3.0 && G4Trk[0].eta<=-2.5) ir = 12;
+   if (G4Trk[0].eta<=-2.5) ir = 12;
 //   cout << " eta = " << G4Trk[0].eta << " ir " << ir << endl; 
     
     // get Strip Barrel info

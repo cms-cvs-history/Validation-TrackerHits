@@ -43,7 +43,7 @@ void Position_ref_all()
  float ent_x[1000],ent_y[1000],ent_z[1000];
  float ext_x[1000],ext_y[1000],ext_z[1000];
  float loc_x[1000],loc_y[1000];
- int ids[1000];
+ int ids[100000];
  float eta[1500];
  int nhit, nprim;
 
@@ -263,13 +263,13 @@ void Position_ref_all()
    if (G4Trk[0].eta>1.0 && G4Trk[0].eta<=1.5) ir = 3;
    if (G4Trk[0].eta>1.5 && G4Trk[0].eta<=2.0) ir = 4;
    if (G4Trk[0].eta>2.0 && G4Trk[0].eta<=2.5) ir = 5;
-   if (G4Trk[0].eta>2.5 && G4Trk[0].eta<=3.0) ir = 6;
+   if (G4Trk[0].eta>2.5) ir = 6;
    if (G4Trk[0].eta>-0.5 && G4Trk[0].eta<=0.0) ir = 7;
    if (G4Trk[0].eta>-1.0 && G4Trk[0].eta<=-0.5) ir = 8;
    if (G4Trk[0].eta>-1.5 && G4Trk[0].eta<=-1.0) ir = 9;
    if (G4Trk[0].eta>-2.0 && G4Trk[0].eta<=-1.5) ir = 10;
    if (G4Trk[0].eta>-2.5 && G4Trk[0].eta<=-2.0) ir = 11;
-   if (G4Trk[0].eta>-3.0 && G4Trk[0].eta<=-2.5) ir = 12;
+   if (G4Trk[0].eta<=-2.5) ir = 12;
 
 //	cout << "Number of hits " << nhit << endl;
     // get Strip Barrel info
