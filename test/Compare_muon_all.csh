@@ -20,6 +20,9 @@ echo "************************************************"
 echo "********** Start ROOT **********"
 root -b -p -q $MACRODIR/EnergyLoss_compare_all.C\(1\)
 if ( ! -e plots/muon ) mkdir plots/muon
+echo "************************************************"
+echo eloss finished, now moving 
+echo "************************************************"
 /bin/mv eloss*.eps plots/muon
 /bin/mv eloss*.gif plots/muon
 

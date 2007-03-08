@@ -559,7 +559,7 @@ void EnergyLoss_compare_all(int arg)
  string tmp_eps = "eloss_TIB_" + stat + ".eps";
  string tmp_gif = "eloss_TIB_" + stat + ".gif";
  TIB->Print(tmp_eps.c_str());
- TIB->Print(tmp_gif.c_str());
+// TIB->Print(tmp_gif.c_str());
 //////////////////  end TIB
 //////////////////  TOB
  for(int i=0; i<12; i++) {
@@ -589,7 +589,7 @@ void EnergyLoss_compare_all(int arg)
  string tmp_eps = "eloss_TOB_" + stat + ".eps";
  string tmp_gif = "eloss_TOB_" + stat + ".gif";
  TOB->Print(tmp_eps.c_str());
- TOB->Print(tmp_gif.c_str());
+// TOB->Print(tmp_gif.c_str());
 //////////////////  end TOB
 //////////////////  TID
  for(int i=0; i<12; i++) {
@@ -619,7 +619,7 @@ void EnergyLoss_compare_all(int arg)
  string tmp_eps = "eloss_TID_" + stat + ".eps";
  string tmp_gif = "eloss_TID_" + stat + ".gif";
  TID->Print(tmp_eps.c_str());
- TID->Print(tmp_gif.c_str());
+// TID->Print(tmp_gif.c_str());
 //////////////////  end TID
 //////////////////  TEC
  for(int i=0; i<12; i++) {
@@ -649,7 +649,8 @@ void EnergyLoss_compare_all(int arg)
  string tmp_eps = "eloss_TEC_" + stat + ".eps";
  string tmp_gif = "eloss_TEC_" + stat + ".gif";
  TEC->Print(tmp_eps.c_str());
- TEC->Print(tmp_gif.c_str());
+// TEC->Print(tmp_gif.c_str());
+ cout << "TEC plots finished " << end;  
 //////////////////  end TEC
 //////////////////  BPIX
  for(int i=0; i<12; i++) {
@@ -679,8 +680,10 @@ void EnergyLoss_compare_all(int arg)
  string tmp_eps = "eloss_BPIX_" + stat + ".eps";
  string tmp_gif = "eloss_BPIX_" + stat + ".gif";
  BPIX->Print(tmp_eps.c_str());
- BPIX->Print(tmp_gif.c_str());
+// BPIX->Print(tmp_gif.c_str());
 //////////////////  end BPIX
+ cout << "BPIX plots finished " << end;  
+
 //////////////////  FPIX
  for(int i=0; i<12; i++) {
   if (n_test6[i] == 0 || n_ref6[i] == 0) continue;
@@ -710,7 +713,7 @@ void EnergyLoss_compare_all(int arg)
  string tmp_eps = "eloss_FPIX_" + stat + ".eps";
  string tmp_gif = "eloss_FPIX_" + stat + ".gif";
  FPIX->Print(tmp_eps.c_str());
- FPIX->Print(tmp_gif.c_str());
+// FPIX->Print(tmp_gif.c_str());
 //////////////////  end FPIX
 
 //////////  summary 
@@ -750,7 +753,7 @@ void EnergyLoss_compare_all(int arg)
   hsum_px -> Draw();
  
   s->Print("summary_eloss_KS.eps");  
-  s->Print("summary_eloss_KS.gif");  
+//  s->Print("summary_eloss_KS.gif");  
    
 }
 
