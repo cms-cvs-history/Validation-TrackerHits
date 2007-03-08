@@ -20,11 +20,8 @@ echo "************************************************"
 echo "********** Start ROOT **********"
 root -b -p -q $MACRODIR/EnergyLoss_compare_all.C\(1\)
 if ( ! -e plots/muon ) mkdir plots/muon
-echo "************************************************"
-echo eloss finished, now moving 
-echo "************************************************"
 /bin/mv eloss*.eps plots/muon
-/bin/mv eloss*.gif plots/muon
+#/bin/mv eloss*.gif plots/muon
 
 # chi2 eloss
 #root -b -p -q $MACRODIR/EnergyLoss_compare_all.C\(2\)
@@ -42,7 +39,7 @@ echo "************************************************"
   root -b -p -q $MACRODIR/Position_compare_all.C\(1\)
  if ( ! -e plots/muon ) mkdir plots/muon
  /bin/mv pos*.eps plots/muon
- /bin/mv pos*.gif plots/muon
+# /bin/mv pos*.gif plots/muon
  
 # chi2 position tests
 #  root -b -p -q $MACRODIR/Position_compare_all.C\(2\)
