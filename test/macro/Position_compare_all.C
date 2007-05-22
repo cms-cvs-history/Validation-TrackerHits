@@ -7,6 +7,7 @@
 
 // Test file
 char filename[] ="$ROOTFile_test";     // The Name of Root File.
+//char filename[] ="SimHitMuon_1.root";     // The Name of Root File.
 char treename[] ="Events";            // The Name of Tree.
 TString brnchname = "PTrackerSimHit_trackerHitsValid_TrkHits_TrackerValidation.obj";
 TBranch *srcbrnch;
@@ -14,6 +15,7 @@ ofstream outfile("LowKS_pos_list.dat");
 
 // Reference file
 char filename_ref[] ="$ROOTFile_ref";     // The Name of reference File.
+//char filename_ref[] ="position_ref_1.root";     // The Name of reference File.
 TFile * rfile;
 
 const int neta = 12;
@@ -65,7 +67,7 @@ void Position_compare_all(int arg2)
  cout << "number of events = " << entry << endl;
 
  string stat;
- int arg2==1;
+ int arg2 = 1;
  if (arg2 == 1) stat = "KS";
  if (arg2 == 2) stat = "chi2";
  
@@ -178,6 +180,7 @@ void Position_compare_all(int arg2)
  hsum_px -> Draw();
  
  s->Print("summary_pos_KS.eps");
+// s->Print("summary_pos_KS.gif");
 }
 
 void test(int iopt, float *low, float *high, string stype)
@@ -268,7 +271,9 @@ for(int i=0; i<6; i++) {
  }
  
  string tmp_eps = "pos_" + name + "_" + SysName[i] + "_" + stype + ".eps";
+ string tmp_gif = "pos_" + name + "_" + SysName[i] + "_" + stype + ".gif";
  Si->Print(tmp_eps.c_str()); 
+// Si->Print(tmp_gif.c_str()); 
 }
  
 }
