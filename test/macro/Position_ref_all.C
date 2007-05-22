@@ -3,6 +3,72 @@
 #include "TBranch.h"
 #include "TH1F.h"
 
+char filename[] ="$ROOTFile";     // The Name of Root File.
+char treename[] ="Events";            // The Name of Tree.
+TString brnchname = "PTrackerSimHit_trackerHitsValid_TrkHits_TrackerValidation.obj";
+
+float ent_x[1000],ent_y[1000],ent_z[1000];
+float ext_x[1000],ext_y[1000],ext_z[1000];
+float loc_x[1000],loc_y[1000];
+int ids[100000];
+float eta[1500];
+int nhit, nprim;
+
+const char *SysName[] = {"TIB","TOB","TID","TEC","BPIX","FPIX"};
+const char *Region[] = {"005","051","115","152","225","253",
+			"-050","-105","-151","-215","-252","-325"};  
+
+TH1F *h1_tib[12],*h2_tib[12],*h3_tib[12],*h4_tib[12],*h5_tib[12];
+TH1F *h1_tob[12],*h2_tob[12],*h3_tob[12],*h4_tob[12],*h5_tob[12];
+TH1F *h1_tid[12],*h2_tid[12],*h3_tid[12],*h4_tid[12],*h5_tid[12];
+TH1F *h1_tec[12],*h2_tec[12],*h3_tec[12],*h4_tec[12],*h5_tec[12];
+TH1F *h1_bpix[12],*h2_bpix[12],*h3_bpix[12],*h4_bpix[12],*h5_bpix[12];
+TH1F *h1_fpix[12],*h2_fpix[12],*h3_fpix[12],*h4_fpix[12],*h5_fpix[12];
+//TIB
+char hn1_tib[30], ht1_tib[40];
+char hn2_tib[30], ht2_tib[40];
+char hn3_tib[30], ht3_tib[40];
+char hn4_tib[30], ht4_tib[40];
+char hn5_tib[30], ht5_tib[40];
+//tob
+char hn1_tob[30], ht1_tob[40];
+char hn2_tob[30], ht2_tob[40];
+char hn3_tob[30], ht3_tob[40];
+char hn4_tob[30], ht4_tob[40];
+char hn5_tob[30], ht5_tob[40];
+//tid
+char hn1_tid[30], ht1_tid[40];
+char hn2_tid[30], ht2_tid[40];
+char hn3_tid[30], ht3_tid[40];
+char hn4_tid[30], ht4_tid[40];
+char hn5_tid[30], ht5_tid[40];
+//tec
+char hn1_tec[30], ht1_tec[40];
+char hn2_tec[30], ht2_tec[40];
+char hn3_tec[30], ht3_tec[40];
+char hn4_tec[30], ht4_tec[40];
+char hn5_tec[30], ht5_tec[40];
+//bpix
+char hn1_bpix[30], ht1_bpix[40];
+char hn2_bpix[30], ht2_bpix[40];
+char hn3_bpix[30], ht3_bpix[40];
+char hn4_bpix[30], ht4_bpix[40];
+char hn5_bpix[30], ht5_bpix[40];
+//fpix
+char hn1_fpix[30], ht1_fpix[40];
+char hn2_fpix[30], ht2_fpix[40];
+char hn3_fpix[30], ht3_fpix[40];
+char hn4_fpix[30], ht4_fpix[40];
+char hn5_fpix[30], ht5_fpix[40];
+
+const float lx_high[] = {3.2, 5.0, 5.5, 6.2, 0.85, 0.4};   
+const float ly_high[] = {6.0, 10., 5.6, 10.5, 3.4, 0.42};
+const float dx_high[] = {0.03, 0.03, 0.02, 0.03, 0.03, 0.03};
+const float dy_high[] = {0.03, 0.03, 0.02, 0.03, 0.03, 0.03};
+const float dz_high[] = {0.05, 0.06, 0.05, 0.06, 0.05, 0.05};
+
+gROOT ->Reset();
+
 void Position_ref_all()
 {	
 /*=======================================================*/
@@ -10,12 +76,6 @@ void Position_ref_all()
 /* by a particle in different Tracker subsystems         */
 /*=======================================================*/
 
- char filename[] ="$ROOTFile";     // The Name of Root File.
-// char filename[] = "simhitoutput.root";     // The Name of Root File.
- char treename[] ="Events";            // The Name of Tree.
- TString brnchname = "PTrackerSimHit_trackerHitsValid_TrkHits_TrackerValidation.obj";
-
- gROOT ->Reset();
  gStyle->SetNdivisions(504,"XYZ");
  gStyle->SetStatH(0.18);
  gStyle->SetStatW(0.35);
@@ -40,13 +100,6 @@ void Position_ref_all()
  cout << "number of events = " << entry << endl;
   
  
- float ent_x[1000],ent_y[1000],ent_z[1000];
- float ext_x[1000],ext_y[1000],ext_z[1000];
- float loc_x[1000],loc_y[1000];
- int ids[100000];
- float eta[1500];
- int nhit, nprim;
-
  // set access to branch as proper object
  PTrackerSimHit TrkSimHits;
  srcbrnch->SetAddress(&TrkSimHits);
@@ -54,58 +107,6 @@ void Position_ref_all()
  cout << "Setting branch address" << endl;
 
 ////// booking histograms
- const char *SysName[] = {"TIB","TOB","TID","TEC","BPIX","FPIX"};
- const char *Region[] = {"005","051","115","152","225","253",
-                       "-050","-105","-151","-215","-252","-325"};  
- 
- TH1F *h1_tib[12],*h2_tib[12],*h3_tib[12],*h4_tib[12],*h5_tib[12];
- TH1F *h1_tob[12],*h2_tob[12],*h3_tob[12],*h4_tob[12],*h5_tob[12];
- TH1F *h1_tid[12],*h2_tid[12],*h3_tid[12],*h4_tid[12],*h5_tid[12];
- TH1F *h1_tec[12],*h2_tec[12],*h3_tec[12],*h4_tec[12],*h5_tec[12];
- TH1F *h1_bpix[12],*h2_bpix[12],*h3_bpix[12],*h4_bpix[12],*h5_bpix[12];
- TH1F *h1_fpix[12],*h2_fpix[12],*h3_fpix[12],*h4_fpix[12],*h5_fpix[12];
-//TIB
- char hn1_tib[30], ht1_tib[40];
- char hn2_tib[30], ht2_tib[40];
- char hn3_tib[30], ht3_tib[40];
- char hn4_tib[30], ht4_tib[40];
- char hn5_tib[30], ht5_tib[40];
-//tob
- char hn1_tob[30], ht1_tob[40];
- char hn2_tob[30], ht2_tob[40];
- char hn3_tob[30], ht3_tob[40];
- char hn4_tob[30], ht4_tob[40];
- char hn5_tob[30], ht5_tob[40];
-//tid
- char hn1_tid[30], ht1_tid[40];
- char hn2_tid[30], ht2_tid[40];
- char hn3_tid[30], ht3_tid[40];
- char hn4_tid[30], ht4_tid[40];
- char hn5_tid[30], ht5_tid[40];
-//tec
- char hn1_tec[30], ht1_tec[40];
- char hn2_tec[30], ht2_tec[40];
- char hn3_tec[30], ht3_tec[40];
- char hn4_tec[30], ht4_tec[40];
- char hn5_tec[30], ht5_tec[40];
-//bpix
- char hn1_bpix[30], ht1_bpix[40];
- char hn2_bpix[30], ht2_bpix[40];
- char hn3_bpix[30], ht3_bpix[40];
- char hn4_bpix[30], ht4_bpix[40];
- char hn5_bpix[30], ht5_bpix[40];
-//fpix
- char hn1_fpix[30], ht1_fpix[40];
- char hn2_fpix[30], ht2_fpix[40];
- char hn3_fpix[30], ht3_fpix[40];
- char hn4_fpix[30], ht4_fpix[40];
- char hn5_fpix[30], ht5_fpix[40];
- 
- const float lx_high[] = {3.2, 5.0, 5.5, 6.2, 0.85, 0.4};   
- const float ly_high[] = {6.0, 10., 5.6, 10.5, 3.4, 0.42};
- const float dx_high[] = {0.03, 0.03, 0.02, 0.03, 0.03, 0.03};
- const float dy_high[] = {0.03, 0.03, 0.02, 0.03, 0.03, 0.03};
- const float dz_high[] = {0.05, 0.06, 0.05, 0.06, 0.05, 0.05};
    
  for(int i=0; i<12; i++) {
   sprintf (ht1_tib,"Entryx-Exitx in TIB %s", Region[i]);

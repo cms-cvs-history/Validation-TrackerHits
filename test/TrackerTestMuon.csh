@@ -1,10 +1,9 @@
 #! /bin/csh
 
-setenv DATADIR /afs/cern.ch/cms/data/CMSSW/Validation/TrackerHits/data
+setenv DATADIR  /afs/cern.ch/cms/data/CMSSW/Validation/TrackerHits/data
 setenv ROOTFile SimHitMuon.root
 
 eval `scramv1 ru -csh`
-SealPluginRefresh
 
  echo "===========> Validating Tracker Simhits with 15 GeV Muon eta ......."
  cp  ${DATADIR}/Muon.root   .
@@ -16,6 +15,4 @@ SealPluginRefresh
 
  if ( -e Muon.root ) /bin/rm Muon.root
   
-
-
 echo "...Done..."
