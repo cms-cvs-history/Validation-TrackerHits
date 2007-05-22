@@ -1,3 +1,4 @@
+<use name=Foundation/PluginManager>
 <use name=FWCore/Framework>
 <use name=FWCore/ParameterSet>
 <use name=FWCore/MessageLogger>
@@ -8,10 +9,11 @@
 <use name=root>
 <use name=clhep>
 
-<flags EDM_PLUGIN=1>
+<flags SEAL_PLUGIN_NAME="ValidationTrackerHits">
 
 <export>
  <lib name=ValidationTrackerHits>
+ <use name=Foundation/PluginManager>
  <use name=FWCore/Framework>
  <use name=FWCore/ParameterSet>
  <use name=FWCore/MessageLogger>
