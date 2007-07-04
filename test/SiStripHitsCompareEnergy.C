@@ -53,10 +53,8 @@ void SiStripHitsCompareEnergy()
      if (PV->KSok(rh1e[i] , ch1e[i])) {
        ks1e[i] = PV->KSCompute(rh1e[i] , ch1e[i] , te );
        PV->KSdraw(rh1e[i] , ch1e[i]);
-       rh1e[i]->SetLineColor(2);      
-       ch1e[i]->SetLineColor(4);             
-       rh1e[i]->Draw();      
-       ch1e[i]->Draw("same");             
+       rh1e[i]->Draw("h");      
+       ch1e[i]->Draw("h same");             
        buf<<"KS="<<ks1e[i]<<std::endl;
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
@@ -79,10 +77,8 @@ void SiStripHitsCompareEnergy()
      if (PV->KSok(rh1e[i] , ch1e[i])) {
        ks1e[i] = PV->KSCompute(rh1e[i] , ch1e[i] , te );
        PV->KSdraw(rh1e[i] , ch1e[i]);
-       rh1e[i]->SetLineColor(2);      
-       ch1e[i]->SetLineColor(4);             
-       rh1e[i]->Draw();      
-       ch1e[i]->Draw("same");             
+       rh1e[i]->Draw("h");      
+       ch1e[i]->Draw("h same");             
        buf<<"KS="<<ks1e[i]<<std::endl;
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
@@ -104,10 +100,8 @@ void SiStripHitsCompareEnergy()
      if (PV->KSok(rh1e[i] , ch1e[i])) {
        ks1e[i] = PV->KSCompute(rh1e[i] , ch1e[i] , te );
        PV->KSdraw(rh1e[i] , ch1e[i]);
-       rh1e[i]->SetLineColor(2);      
-       ch1e[i]->SetLineColor(4);             
-       rh1e[i]->Draw();      
-       ch1e[i]->Draw("same");             
+       rh1e[i]->Draw("h");      
+       ch1e[i]->Draw("h same");             
        buf<<"KS="<<ks1e[i]<<std::endl;
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
@@ -129,10 +123,8 @@ void SiStripHitsCompareEnergy()
      if (PV->KSok(rh1e[i] , ch1e[i])) {
        ks1e[i] = PV->KSCompute(rh1e[i] , ch1e[i] , te );
        PV->KSdraw(rh1e[i] , ch1e[i]);
-       rh1e[i]->SetLineColor(2);      
-       ch1e[i]->SetLineColor(4);             
-       rh1e[i]->Draw();      
-       ch1e[i]->Draw("same");             
+       rh1e[i]->Draw("h");      
+       ch1e[i]->Draw("h same");             
        buf<<"KS="<<ks1e[i]<<std::endl;
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
@@ -154,10 +146,8 @@ void SiStripHitsCompareEnergy()
      if (PV->KSok(rh1e[i] , ch1e[i])) {
        ks1e[i] = PV->KSCompute(rh1e[i] , ch1e[i] , te );
        PV->KSdraw(rh1e[i] , ch1e[i]);
-       rh1e[i]->SetLineColor(2);      
-       ch1e[i]->SetLineColor(4);             
-       rh1e[i]->Draw();      
-       ch1e[i]->Draw("same");             
+       rh1e[i]->Draw("h");      
+       ch1e[i]->Draw("h same");             
        buf<<"KS="<<ks1e[i]<<std::endl;
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
@@ -179,10 +169,8 @@ void SiStripHitsCompareEnergy()
      if (PV->KSok(rh1e[i] , ch1e[i])) {
        ks1e[i] = PV->KSCompute(rh1e[i] , ch1e[i] , te );
        PV->KSdraw(rh1e[i] , ch1e[i]);
-       rh1e[i]->SetLineColor(2);      
-       ch1e[i]->SetLineColor(4);             
-       rh1e[i]->Draw();      
-       ch1e[i]->Draw("same");             
+       rh1e[i]->Draw("h");      
+       ch1e[i]->Draw("h same");             
        buf<<"KS="<<ks1e[i]<<std::endl;
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
