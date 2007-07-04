@@ -45,7 +45,7 @@ void SiStripHitsCompareEnergy()
    TH1F * rh1e[12];
    
    for (Int_t i=0; i<12; i++) {        
-     sprintf(histo,"DQMData/TIBHit/Eloss_TIB_%i",i+1);
+     sprintf(histo,"DQMData/TrackerHit/TIBHit/Eloss_TIB_%i",i+1);
      rh1e[i] = (TH1F*)rfile->Get(histo)->Clone();
      ch1e[i] = (TH1F*)cfile->Get(histo)->Clone();
       
@@ -53,8 +53,10 @@ void SiStripHitsCompareEnergy()
      if (PV->KSok(rh1e[i] , ch1e[i])) {
        ks1e[i] = PV->KSCompute(rh1e[i] , ch1e[i] , te );
        PV->KSdraw(rh1e[i] , ch1e[i]);
-       rh1e[i]->Draw("h");      
-       ch1e[i]->Draw("pesame");             
+       rh1e[i]->SetLineColor(2);      
+       ch1e[i]->SetLineColor(4);             
+       rh1e[i]->Draw();      
+       ch1e[i]->Draw("same");             
        buf<<"KS="<<ks1e[i]<<std::endl;
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
@@ -69,7 +71,7 @@ void SiStripHitsCompareEnergy()
    TOB->Divide(3,4);
    
    for (Int_t i=0; i<12; i++) {        
-     sprintf(histo,"DQMData/TOBHit/Eloss_TOB_%i",i+1);
+     sprintf(histo,"DQMData/TrackerHit/TOBHit/Eloss_TOB_%i",i+1);
      rh1e[i] = (TH1F*)rfile->Get(histo)->Clone();
      ch1e[i] = (TH1F*)cfile->Get(histo)->Clone();
       
@@ -77,8 +79,10 @@ void SiStripHitsCompareEnergy()
      if (PV->KSok(rh1e[i] , ch1e[i])) {
        ks1e[i] = PV->KSCompute(rh1e[i] , ch1e[i] , te );
        PV->KSdraw(rh1e[i] , ch1e[i]);
-       rh1e[i]->Draw("h");      
-       ch1e[i]->Draw("pesame");             
+       rh1e[i]->SetLineColor(2);      
+       ch1e[i]->SetLineColor(4);             
+       rh1e[i]->Draw();      
+       ch1e[i]->Draw("same");             
        buf<<"KS="<<ks1e[i]<<std::endl;
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
@@ -92,7 +96,7 @@ void SiStripHitsCompareEnergy()
    TID->Divide(3,4);
    
    for (Int_t i=0; i<12; i++) {        
-     sprintf(histo,"DQMData/TIDHit/Eloss_TID_%i",i+1);
+     sprintf(histo,"DQMData/TrackerHit/TIDHit/Eloss_TID_%i",i+1);
      rh1e[i] = (TH1F*)rfile->Get(histo)->Clone();
      ch1e[i] = (TH1F*)cfile->Get(histo)->Clone();
       
@@ -100,8 +104,10 @@ void SiStripHitsCompareEnergy()
      if (PV->KSok(rh1e[i] , ch1e[i])) {
        ks1e[i] = PV->KSCompute(rh1e[i] , ch1e[i] , te );
        PV->KSdraw(rh1e[i] , ch1e[i]);
-       rh1e[i]->Draw("h");      
-       ch1e[i]->Draw("pesame");             
+       rh1e[i]->SetLineColor(2);      
+       ch1e[i]->SetLineColor(4);             
+       rh1e[i]->Draw();      
+       ch1e[i]->Draw("same");             
        buf<<"KS="<<ks1e[i]<<std::endl;
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
@@ -115,7 +121,7 @@ void SiStripHitsCompareEnergy()
    TEC->Divide(3,4);
    
    for (Int_t i=0; i<12; i++) {        
-     sprintf(histo,"DQMData/TECHit/Eloss_TEC_%i",i+1);
+     sprintf(histo,"DQMData/TrackerHit/TECHit/Eloss_TEC_%i",i+1);
      rh1e[i] = (TH1F*)rfile->Get(histo)->Clone();
      ch1e[i] = (TH1F*)cfile->Get(histo)->Clone();
       
@@ -123,8 +129,10 @@ void SiStripHitsCompareEnergy()
      if (PV->KSok(rh1e[i] , ch1e[i])) {
        ks1e[i] = PV->KSCompute(rh1e[i] , ch1e[i] , te );
        PV->KSdraw(rh1e[i] , ch1e[i]);
-       rh1e[i]->Draw("h");      
-       ch1e[i]->Draw("pesame");             
+       rh1e[i]->SetLineColor(2);      
+       ch1e[i]->SetLineColor(4);             
+       rh1e[i]->Draw();      
+       ch1e[i]->Draw("same");             
        buf<<"KS="<<ks1e[i]<<std::endl;
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
@@ -138,7 +146,7 @@ void SiStripHitsCompareEnergy()
    BPIX->Divide(3,4);
    
    for (Int_t i=0; i<12; i++) {        
-     sprintf(histo,"DQMData/BPIXHit/Eloss_BPIX_%i",i+1);
+     sprintf(histo,"DQMData/TrackerHit/BPIXHit/Eloss_BPIX_%i",i+1);
      rh1e[i] = (TH1F*)rfile->Get(histo)->Clone();
      ch1e[i] = (TH1F*)cfile->Get(histo)->Clone();
       
@@ -146,8 +154,10 @@ void SiStripHitsCompareEnergy()
      if (PV->KSok(rh1e[i] , ch1e[i])) {
        ks1e[i] = PV->KSCompute(rh1e[i] , ch1e[i] , te );
        PV->KSdraw(rh1e[i] , ch1e[i]);
-       rh1e[i]->Draw("h");      
-       ch1e[i]->Draw("pesame");             
+       rh1e[i]->SetLineColor(2);      
+       ch1e[i]->SetLineColor(4);             
+       rh1e[i]->Draw();      
+       ch1e[i]->Draw("same");             
        buf<<"KS="<<ks1e[i]<<std::endl;
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
@@ -161,7 +171,7 @@ void SiStripHitsCompareEnergy()
    FPIX->Divide(3,4);
    
    for (Int_t i=0; i<12; i++) {        
-     sprintf(histo,"DQMData/FPIXHit/Eloss_FPIX_%i",i+1);
+     sprintf(histo,"DQMData/TrackerHit/FPIXHit/Eloss_FPIX_%i",i+1);
      rh1e[i] = (TH1F*)rfile->Get(histo)->Clone();
      ch1e[i] = (TH1F*)cfile->Get(histo)->Clone();
       
@@ -169,8 +179,10 @@ void SiStripHitsCompareEnergy()
      if (PV->KSok(rh1e[i] , ch1e[i])) {
        ks1e[i] = PV->KSCompute(rh1e[i] , ch1e[i] , te );
        PV->KSdraw(rh1e[i] , ch1e[i]);
-       rh1e[i]->Draw("h");      
-       ch1e[i]->Draw("pesame");             
+       rh1e[i]->SetLineColor(2);      
+       ch1e[i]->SetLineColor(4);             
+       rh1e[i]->Draw();      
+       ch1e[i]->Draw("same");             
        buf<<"KS="<<ks1e[i]<<std::endl;
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
@@ -214,10 +226,12 @@ void SiStripHitsCompareEnergy()
  FPIX->Print("eloss_FPIX_KS.eps");
  s->Print("eloss_summary_KS.eps");  
 
+ TIB->Print("eloss_TIB_KS.gif");
+ TOB->Print("eloss_TOB_KS.gif");
+ TID->Print("eloss_TID_KS.gif");
+ TEC->Print("eloss_TEC_KS.gif");
+ BPIX->Print("eloss_BPIX_KS.gif");
+ FPIX->Print("eloss_FPIX_KS.gif");
+ s->Print("eloss_summary_KS.gif");  
+
 }
-
-
-
-
-
-

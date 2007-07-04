@@ -62,8 +62,9 @@ void SiStripHitsComparePosition()
 
 // TOB
    system = "TOB";
-   string outname = "pos_"+variable+"_"+system+"_KS.eps";
-   histogram = "DQMData/"+system+"Hit/"+variable+"_"+system+"_";
+   string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
+   string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
+   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
@@ -76,8 +77,10 @@ void SiStripHitsComparePosition()
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
        PV->KSdraw(rh[i] , ch[i]);
+       rh[i]->SetLineColor(2);      
+       ch[i]->SetLineColor(4);             
        rh[i]->Draw("h");      
-       ch[i]->Draw("pesame");             
+       ch[i]->Draw("same");             
        buf<<"KS="<<ks[i]<<std::endl;
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
@@ -85,12 +88,14 @@ void SiStripHitsComparePosition()
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
-    c->Print(outname.c_str());
+    c->Print(outname_eps.c_str());
+    c->Print(outname_gif.c_str());
    
 // TIB
    system = "TIB";
-   string outname = "pos_"+variable+"_"+system+"_KS.eps";
-   histogram = "DQMData/"+system+"Hit/"+variable+"_"+system+"_";
+   string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
+   string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
+   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
@@ -103,8 +108,10 @@ void SiStripHitsComparePosition()
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
        PV->KSdraw(rh[i] , ch[i]);
+       rh[i]->SetLineColor(2);      
+       ch[i]->SetLineColor(4);             
        rh[i]->Draw("h");      
-       ch[i]->Draw("pesame");             
+       ch[i]->Draw("same");             
        buf<<"KS="<<ks[i]<<std::endl;
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
@@ -112,12 +119,14 @@ void SiStripHitsComparePosition()
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
-    c->Print(outname.c_str());
+    c->Print(outname_eps.c_str());
+    c->Print(outname_gif.c_str());
    
 // TID
    system = "TID";
-   histogram = "DQMData/"+system+"Hit/"+variable+"_"+system+"_";
-   string outname = "pos_"+variable+"_"+system+"_KS.eps";
+   string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
+   string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
+   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
@@ -130,8 +139,10 @@ void SiStripHitsComparePosition()
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
        PV->KSdraw(rh[i] , ch[i]);
+       rh[i]->SetLineColor(2);      
+       ch[i]->SetLineColor(4);             
        rh[i]->Draw("h");      
-       ch[i]->Draw("pesame");             
+       ch[i]->Draw("same");             
        buf<<"KS="<<ks[i]<<std::endl;
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
@@ -139,12 +150,14 @@ void SiStripHitsComparePosition()
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
-    c->Print(outname.c_str());
+    c->Print(outname_eps.c_str());
+    c->Print(outname_gif.c_str());
 
 // TEC
    system = "TEC";
-   string outname = "pos_"+variable+"_"+system+"_KS.eps";
-   histogram = "DQMData/"+system+"Hit/"+variable+"_"+system+"_";
+   string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
+   string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
+   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
@@ -157,8 +170,10 @@ void SiStripHitsComparePosition()
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
        PV->KSdraw(rh[i] , ch[i]);
+       rh[i]->SetLineColor(2);      
+       ch[i]->SetLineColor(4);             
        rh[i]->Draw("h");      
-       ch[i]->Draw("pesame");             
+       ch[i]->Draw("same");             
        buf<<"KS="<<ks[i]<<std::endl;
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
@@ -166,12 +181,14 @@ void SiStripHitsComparePosition()
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
-    c->Print(outname.c_str());
+    c->Print(outname_eps.c_str());
+    c->Print(outname_gif.c_str());
 
 // BPIX
    system = "BPIX";
-   string outname = "pos_"+variable+"_"+system+"_KS.eps";
-   histogram = "DQMData/"+system+"Hit/"+variable+"_"+system+"_";
+   string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
+   string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
+   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
@@ -184,8 +201,10 @@ void SiStripHitsComparePosition()
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
        PV->KSdraw(rh[i] , ch[i]);
+       rh[i]->SetLineColor(2);      
+       ch[i]->SetLineColor(4);             
        rh[i]->Draw("h");      
-       ch[i]->Draw("pesame");             
+       ch[i]->Draw("same");             
        buf<<"KS="<<ks[i]<<std::endl;
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
@@ -193,11 +212,13 @@ void SiStripHitsComparePosition()
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
-    c->Print(outname.c_str());
+    c->Print(outname_eps.c_str());
+    c->Print(outname_gif.c_str());
    
    system = "FPIX";
-   string outname = "pos_"+variable+"_"+system+"_KS.eps";
-   histogram = "DQMData/"+system+"Hit/"+variable+"_"+system+"_";
+   string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
+   string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
+   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
@@ -210,8 +231,10 @@ void SiStripHitsComparePosition()
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
        PV->KSdraw(rh[i] , ch[i]);
+       rh[i]->SetLineColor(2);      
+       ch[i]->SetLineColor(4);             
        rh[i]->Draw("h");      
-       ch[i]->Draw("pesame");             
+       ch[i]->Draw("same");             
        buf<<"KS="<<ks[i]<<std::endl;
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
@@ -219,7 +242,8 @@ void SiStripHitsComparePosition()
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
-    c->Print(outname.c_str());
+    c->Print(outname_eps.c_str());
+    c->Print(outname_gif.c_str());
 
 //=======================================================
    variable = "Entryy-Exity";
@@ -227,8 +251,9 @@ void SiStripHitsComparePosition()
 
 // TOB
    system = "TOB";
-   string outname = "pos_"+variable+"_"+system+"_KS.eps";
-   histogram = "DQMData/"+system+"Hit/"+variable+"_"+system+"_";
+   string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
+   string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
+   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
@@ -241,8 +266,10 @@ void SiStripHitsComparePosition()
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
        PV->KSdraw(rh[i] , ch[i]);
+       rh[i]->SetLineColor(2);      
+       ch[i]->SetLineColor(4);             
        rh[i]->Draw("h");      
-       ch[i]->Draw("pesame");             
+       ch[i]->Draw("same");             
        buf<<"KS="<<ks[i]<<std::endl;
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
@@ -250,12 +277,14 @@ void SiStripHitsComparePosition()
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
-    c->Print(outname.c_str());
+    c->Print(outname_eps.c_str());
+    c->Print(outname_gif.c_str());
    
 // TIB
    system = "TIB";
-   string outname = "pos_"+variable+"_"+system+"_KS.eps";
-   histogram = "DQMData/"+system+"Hit/"+variable+"_"+system+"_";
+   string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
+   string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
+   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
@@ -268,8 +297,10 @@ void SiStripHitsComparePosition()
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
        PV->KSdraw(rh[i] , ch[i]);
+       rh[i]->SetLineColor(2);      
+       ch[i]->SetLineColor(4);             
        rh[i]->Draw("h");      
-       ch[i]->Draw("pesame");             
+       ch[i]->Draw("same");             
        buf<<"KS="<<ks[i]<<std::endl;
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
@@ -277,12 +308,14 @@ void SiStripHitsComparePosition()
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
-    c->Print(outname.c_str());
+    c->Print(outname_eps.c_str());
+    c->Print(outname_gif.c_str());
    
 // TID
    system = "TID";
-   string outname = "pos_"+variable+"_"+system+"_KS.eps";
-   histogram = "DQMData/"+system+"Hit/"+variable+"_"+system+"_";
+   string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
+   string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
+   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
@@ -295,8 +328,10 @@ void SiStripHitsComparePosition()
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
        PV->KSdraw(rh[i] , ch[i]);
+       rh[i]->SetLineColor(2);      
+       ch[i]->SetLineColor(4);             
        rh[i]->Draw("h");      
-       ch[i]->Draw("pesame");             
+       ch[i]->Draw("same");             
        buf<<"KS="<<ks[i]<<std::endl;
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
@@ -304,12 +339,14 @@ void SiStripHitsComparePosition()
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
-    c->Print(outname.c_str());
+    c->Print(outname_eps.c_str());
+    c->Print(outname_gif.c_str());
 
 // TEC
    system = "TEC";
-   string outname = "pos_"+variable+"_"+system+"_KS.eps";
-   histogram = "DQMData/"+system+"Hit/"+variable+"_"+system+"_";
+   string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
+   string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
+   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
@@ -322,8 +359,10 @@ void SiStripHitsComparePosition()
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
        PV->KSdraw(rh[i] , ch[i]);
+       rh[i]->SetLineColor(2);      
+       ch[i]->SetLineColor(4);             
        rh[i]->Draw("h");      
-       ch[i]->Draw("pesame");             
+       ch[i]->Draw("same");             
        buf<<"KS="<<ks[i]<<std::endl;
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
@@ -331,12 +370,14 @@ void SiStripHitsComparePosition()
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
-    c->Print(outname.c_str());
+    c->Print(outname_eps.c_str());
+    c->Print(outname_gif.c_str());
 
 // BPIX
    system = "BPIX";
-   string outname = "pos_"+variable+"_"+system+"_KS.eps";
-   histogram = "DQMData/"+system+"Hit/"+variable+"_"+system+"_";
+   string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
+   string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
+   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
@@ -349,8 +390,10 @@ void SiStripHitsComparePosition()
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
        PV->KSdraw(rh[i] , ch[i]);
+       rh[i]->SetLineColor(2);      
+       ch[i]->SetLineColor(4);             
        rh[i]->Draw("h");      
-       ch[i]->Draw("pesame");             
+       ch[i]->Draw("same");             
        buf<<"KS="<<ks[i]<<std::endl;
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
@@ -358,11 +401,13 @@ void SiStripHitsComparePosition()
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
-    c->Print(outname.c_str());
+    c->Print(outname_eps.c_str());
+    c->Print(outname_gif.c_str());
    
    system = "FPIX";
-   string outname = "pos_"+variable+"_"+system+"_KS.eps";
-   histogram = "DQMData/"+system+"Hit/"+variable+"_"+system+"_";
+   string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
+   string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
+   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
@@ -374,9 +419,11 @@ void SiStripHitsComparePosition()
      c->cd(i+1);
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
-       PV->KSdraw(rh[i] , ch[i]);
+       PV->KSdraw(rh[i] , ch[i]); 
+       rh[i]->SetLineColor(2);      
+       ch[i]->SetLineColor(4);             
        rh[i]->Draw("h");      
-       ch[i]->Draw("pesame");             
+       ch[i]->Draw("same");             
        buf<<"KS="<<ks[i]<<std::endl;
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
@@ -384,7 +431,8 @@ void SiStripHitsComparePosition()
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
-    c->Print(outname.c_str());
+    c->Print(outname_eps.c_str());
+    c->Print(outname_gif.c_str());
 
 //=======================================================
    variable = "Entryz-Exitz";
@@ -392,8 +440,9 @@ void SiStripHitsComparePosition()
 
 // TOB
    system = "TOB";
-   string outname = "pos_"+variable+"_"+system+"_KS.eps";
-   histogram = "DQMData/"+system+"Hit/"+variable+"_"+system+"_";
+   string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
+   string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
+   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
@@ -406,8 +455,10 @@ void SiStripHitsComparePosition()
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
        PV->KSdraw(rh[i] , ch[i]);
+       rh[i]->SetLineColor(2);      
+       ch[i]->SetLineColor(4);             
        rh[i]->Draw("h");      
-       ch[i]->Draw("pesame");             
+       ch[i]->Draw("same");             
        buf<<"KS="<<ks[i]<<std::endl;
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
@@ -415,12 +466,14 @@ void SiStripHitsComparePosition()
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
-    c->Print(outname.c_str());
+    c->Print(outname_eps.c_str());
+    c->Print(outname_gif.c_str());
    
 // TIB
    system = "TIB";
-   string outname = "pos_"+variable+"_"+system+"_KS.eps";
-   histogram = "DQMData/"+system+"Hit/"+variable+"_"+system+"_";
+   string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
+   string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
+   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
@@ -433,8 +486,10 @@ void SiStripHitsComparePosition()
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
        PV->KSdraw(rh[i] , ch[i]);
+       rh[i]->SetLineColor(2);      
+       ch[i]->SetLineColor(4);             
        rh[i]->Draw("h");      
-       ch[i]->Draw("pesame");             
+       ch[i]->Draw("same");             
        buf<<"KS="<<ks[i]<<std::endl;
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
@@ -442,12 +497,14 @@ void SiStripHitsComparePosition()
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
-    c->Print(outname.c_str());
+    c->Print(outname_eps.c_str());
+    c->Print(outname_gif.c_str());
    
 // TID
    system = "TID";
-   string outname = "pos_"+variable+"_"+system+"_KS.eps";
-   histogram = "DQMData/"+system+"Hit/"+variable+"_"+system+"_";
+   string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
+   string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
+   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
@@ -460,8 +517,10 @@ void SiStripHitsComparePosition()
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
        PV->KSdraw(rh[i] , ch[i]);
+       rh[i]->SetLineColor(2);      
+       ch[i]->SetLineColor(4);             
        rh[i]->Draw("h");      
-       ch[i]->Draw("pesame");             
+       ch[i]->Draw("same");             
        buf<<"KS="<<ks[i]<<std::endl;
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
@@ -469,12 +528,14 @@ void SiStripHitsComparePosition()
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
-    c->Print(outname.c_str());
+    c->Print(outname_eps.c_str());
+    c->Print(outname_gif.c_str());
 
 // TEC
    system = "TEC";
-   string outname = "pos_"+variable+"_"+system+"_KS.eps";
-   histogram = "DQMData/"+system+"Hit/"+variable+"_"+system+"_";
+   string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
+   string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
+   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
@@ -487,8 +548,10 @@ void SiStripHitsComparePosition()
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
        PV->KSdraw(rh[i] , ch[i]);
+       rh[i]->SetLineColor(2);      
+       ch[i]->SetLineColor(4);             
        rh[i]->Draw("h");      
-       ch[i]->Draw("pesame");             
+       ch[i]->Draw("same");             
        buf<<"KS="<<ks[i]<<std::endl;
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
@@ -496,12 +559,14 @@ void SiStripHitsComparePosition()
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
-    c->Print(outname.c_str());
+    c->Print(outname_eps.c_str());
+    c->Print(outname_gif.c_str());
 
 // BPIX
    system = "BPIX";
-   string outname = "pos_"+variable+"_"+system+"_KS.eps";
-   histogram = "DQMData/"+system+"Hit/"+variable+"_"+system+"_";
+   string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
+   string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
+   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
@@ -514,8 +579,10 @@ void SiStripHitsComparePosition()
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
        PV->KSdraw(rh[i] , ch[i]);
+       rh[i]->SetLineColor(2);      
+       ch[i]->SetLineColor(4);             
        rh[i]->Draw("h");      
-       ch[i]->Draw("pesame");             
+       ch[i]->Draw("same");             
        buf<<"KS="<<ks[i]<<std::endl;
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
@@ -523,11 +590,13 @@ void SiStripHitsComparePosition()
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
-    c->Print(outname.c_str());
+    c->Print(outname_eps.c_str());
+    c->Print(outname_gif.c_str());
    
    system = "FPIX";
-   string outname = "pos_"+variable+"_"+system+"_KS.eps";
-   histogram = "DQMData/"+system+"Hit/"+variable+"_"+system+"_";
+   string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
+   string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
+   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
@@ -540,8 +609,10 @@ void SiStripHitsComparePosition()
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
        PV->KSdraw(rh[i] , ch[i]);
+       rh[i]->SetLineColor(2);      
+       ch[i]->SetLineColor(4);             
        rh[i]->Draw("h");      
-       ch[i]->Draw("pesame");             
+       ch[i]->Draw("same");             
        buf<<"KS="<<ks[i]<<std::endl;
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
@@ -549,7 +620,8 @@ void SiStripHitsComparePosition()
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
-    c->Print(outname.c_str());
+    c->Print(outname_eps.c_str());
+    c->Print(outname_gif.c_str());
 
 //=======================================================
    variable = "Localx";
@@ -557,8 +629,9 @@ void SiStripHitsComparePosition()
 
 // TOB
    system = "TOB";
-   string outname = "pos_"+variable+"_"+system+"_KS.eps";
-   histogram = "DQMData/"+system+"Hit/"+variable+"_"+system+"_";
+   string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
+   string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
+   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
@@ -571,8 +644,10 @@ void SiStripHitsComparePosition()
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
        PV->KSdraw(rh[i] , ch[i]);
+       rh[i]->SetLineColor(2);      
+       ch[i]->SetLineColor(4);             
        rh[i]->Draw("h");      
-       ch[i]->Draw("pesame");             
+       ch[i]->Draw("same");             
        buf<<"KS="<<ks[i]<<std::endl;
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
@@ -580,12 +655,14 @@ void SiStripHitsComparePosition()
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
-    c->Print(outname.c_str());
+    c->Print(outname_eps.c_str());
+    c->Print(outname_gif.c_str());
    
 // TIB
    system = "TIB";
-   string outname = "pos_"+variable+"_"+system+"_KS.eps";
-   histogram = "DQMData/"+system+"Hit/"+variable+"_"+system+"_";
+   string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
+   string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
+   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
@@ -598,8 +675,10 @@ void SiStripHitsComparePosition()
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
        PV->KSdraw(rh[i] , ch[i]);
+       rh[i]->SetLineColor(2);      
+       ch[i]->SetLineColor(4);             
        rh[i]->Draw("h");      
-       ch[i]->Draw("pesame");             
+       ch[i]->Draw("same");             
        buf<<"KS="<<ks[i]<<std::endl;
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
@@ -607,12 +686,14 @@ void SiStripHitsComparePosition()
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
-    c->Print(outname.c_str());
+    c->Print(outname_eps.c_str());
+    c->Print(outname_gif.c_str());
    
 // TID
    system = "TID";
-   string outname = "pos_"+variable+"_"+system+"_KS.eps";
-   histogram = "DQMData/"+system+"Hit/"+variable+"_"+system+"_";
+   string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
+   string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
+   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
@@ -625,8 +706,10 @@ void SiStripHitsComparePosition()
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
        PV->KSdraw(rh[i] , ch[i]);
+       rh[i]->SetLineColor(2);      
+       ch[i]->SetLineColor(4);             
        rh[i]->Draw("h");      
-       ch[i]->Draw("pesame");             
+       ch[i]->Draw("same");             
        buf<<"KS="<<ks[i]<<std::endl;
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
@@ -634,12 +717,14 @@ void SiStripHitsComparePosition()
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
-    c->Print(outname.c_str());
+    c->Print(outname_eps.c_str());
+    c->Print(outname_gif.c_str());
 
 // TEC
    system = "TEC";
-   string outname = "pos_"+variable+"_"+system+"_KS.eps";
-   histogram = "DQMData/"+system+"Hit/"+variable+"_"+system+"_";
+   string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
+   string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
+   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
@@ -652,8 +737,10 @@ void SiStripHitsComparePosition()
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
        PV->KSdraw(rh[i] , ch[i]);
+       rh[i]->SetLineColor(2);      
+       ch[i]->SetLineColor(4);             
        rh[i]->Draw("h");      
-       ch[i]->Draw("pesame");             
+       ch[i]->Draw("same");             
        buf<<"KS="<<ks[i]<<std::endl;
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
@@ -661,12 +748,14 @@ void SiStripHitsComparePosition()
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
-    c->Print(outname.c_str());
+    c->Print(outname_eps.c_str());
+    c->Print(outname_gif.c_str());
 
 // BPIX
    system = "BPIX";
-   string outname = "pos_"+variable+"_"+system+"_KS.eps";
-   histogram = "DQMData/"+system+"Hit/"+variable+"_"+system+"_";
+   string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
+   string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
+   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
@@ -679,8 +768,10 @@ void SiStripHitsComparePosition()
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
        PV->KSdraw(rh[i] , ch[i]);
+       rh[i]->SetLineColor(2);      
+       ch[i]->SetLineColor(4);             
        rh[i]->Draw("h");      
-       ch[i]->Draw("pesame");             
+       ch[i]->Draw("same");             
        buf<<"KS="<<ks[i]<<std::endl;
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
@@ -688,11 +779,13 @@ void SiStripHitsComparePosition()
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
-    c->Print(outname.c_str());
+    c->Print(outname_eps.c_str());
+    c->Print(outname_gif.c_str());
    
    system = "FPIX";
-   string outname = "pos_"+variable+"_"+system+"_KS.eps";
-   histogram = "DQMData/"+system+"Hit/"+variable+"_"+system+"_";
+   string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
+   string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
+   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
@@ -705,8 +798,10 @@ void SiStripHitsComparePosition()
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
        PV->KSdraw(rh[i] , ch[i]);
+       rh[i]->SetLineColor(2);      
+       ch[i]->SetLineColor(4);             
        rh[i]->Draw("h");      
-       ch[i]->Draw("pesame");             
+       ch[i]->Draw("same");             
        buf<<"KS="<<ks[i]<<std::endl;
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
@@ -714,7 +809,8 @@ void SiStripHitsComparePosition()
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
-    c->Print(outname.c_str());
+    c->Print(outname_eps.c_str());
+    c->Print(outname_gif.c_str());
 
 //=======================================================
    variable = "Localy";
@@ -722,8 +818,9 @@ void SiStripHitsComparePosition()
 
 // TOB
    system = "TOB";
-   string outname = "pos_"+variable+"_"+system+"_KS.eps";
-   histogram = "DQMData/"+system+"Hit/"+variable+"_"+system+"_";
+   string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
+   string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
+   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
@@ -736,8 +833,10 @@ void SiStripHitsComparePosition()
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
        PV->KSdraw(rh[i] , ch[i]);
+       rh[i]->SetLineColor(2);      
+       ch[i]->SetLineColor(4);             
        rh[i]->Draw("h");      
-       ch[i]->Draw("pesame");             
+       ch[i]->Draw("same");             
        buf<<"KS="<<ks[i]<<std::endl;
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
@@ -745,12 +844,14 @@ void SiStripHitsComparePosition()
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
-    c->Print(outname.c_str());
+    c->Print(outname_eps.c_str());
+    c->Print(outname_gif.c_str());
    
 // TIB
    system = "TIB";
-   string outname = "pos_"+variable+"_"+system+"_KS.eps";
-   histogram = "DQMData/"+system+"Hit/"+variable+"_"+system+"_";
+   string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
+   string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
+   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
@@ -763,8 +864,10 @@ void SiStripHitsComparePosition()
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
        PV->KSdraw(rh[i] , ch[i]);
+       rh[i]->SetLineColor(2);      
+       ch[i]->SetLineColor(4);             
        rh[i]->Draw("h");      
-       ch[i]->Draw("pesame");             
+       ch[i]->Draw("same");             
        buf<<"KS="<<ks[i]<<std::endl;
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
@@ -772,12 +875,14 @@ void SiStripHitsComparePosition()
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
-    c->Print(outname.c_str());
+    c->Print(outname_eps.c_str());
+    c->Print(outname_gif.c_str());
    
 // TID
    system = "TID";
-   string outname = "pos_"+variable+"_"+system+"_KS.eps";
-   histogram = "DQMData/"+system+"Hit/"+variable+"_"+system+"_";
+   string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
+   string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
+   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
@@ -790,8 +895,10 @@ void SiStripHitsComparePosition()
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
        PV->KSdraw(rh[i] , ch[i]);
+       rh[i]->SetLineColor(2);      
+       ch[i]->SetLineColor(4);             
        rh[i]->Draw("h");      
-       ch[i]->Draw("pesame");             
+       ch[i]->Draw("same");             
        buf<<"KS="<<ks[i]<<std::endl;
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
@@ -799,12 +906,14 @@ void SiStripHitsComparePosition()
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
-    c->Print(outname.c_str());
+    c->Print(outname_eps.c_str());
+    c->Print(outname_gif.c_str());
 
 // TEC
    system = "TEC";
-   string outname = "pos_"+variable+"_"+system+"_KS.eps";
-   histogram = "DQMData/"+system+"Hit/"+variable+"_"+system+"_";
+   string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
+   string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
+   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
@@ -817,8 +926,10 @@ void SiStripHitsComparePosition()
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
        PV->KSdraw(rh[i] , ch[i]);
+       rh[i]->SetLineColor(2);      
+       ch[i]->SetLineColor(4);             
        rh[i]->Draw("h");      
-       ch[i]->Draw("pesame");             
+       ch[i]->Draw("same");             
        buf<<"KS="<<ks[i]<<std::endl;
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
@@ -826,12 +937,14 @@ void SiStripHitsComparePosition()
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
-    c->Print(outname.c_str());
+    c->Print(outname_eps.c_str());
+    c->Print(outname_gif.c_str());
 
 // BPIX
    system = "BPIX";
-   string outname = "pos_"+variable+"_"+system+"_KS.eps";
-   histogram = "DQMData/"+system+"Hit/"+variable+"_"+system+"_";
+   string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
+   string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
+   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
@@ -844,8 +957,10 @@ void SiStripHitsComparePosition()
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
        PV->KSdraw(rh[i] , ch[i]);
+       rh[i]->SetLineColor(2);      
+       ch[i]->SetLineColor(4);             
        rh[i]->Draw("h");      
-       ch[i]->Draw("pesame");             
+       ch[i]->Draw("same");             
        buf<<"KS="<<ks[i]<<std::endl;
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
@@ -853,11 +968,13 @@ void SiStripHitsComparePosition()
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
-    c->Print(outname.c_str());
+    c->Print(outname_eps.c_str());
+    c->Print(outname_gif.c_str());
    
    system = "FPIX";
-   string outname = "pos_"+variable+"_"+system+"_KS.eps";
-   histogram = "DQMData/"+system+"Hit/"+variable+"_"+system+"_";
+   string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
+   string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
+   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
@@ -870,8 +987,10 @@ void SiStripHitsComparePosition()
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
        PV->KSdraw(rh[i] , ch[i]);
+       rh[i]->SetLineColor(2);      
+       ch[i]->SetLineColor(4);             
        rh[i]->Draw("h");      
-       ch[i]->Draw("pesame");             
+       ch[i]->Draw("same");             
        buf<<"KS="<<ks[i]<<std::endl;
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
@@ -879,7 +998,8 @@ void SiStripHitsComparePosition()
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
-    c->Print(outname.c_str());
+    c->Print(outname_eps.c_str());
+    c->Print(outname_gif.c_str());
 
 //===================================================
 // Summary plots
@@ -913,6 +1033,7 @@ void SiStripHitsComparePosition()
  hsum_px -> Draw();
  
  s->Print("pos_summary_KS.eps");  
+ s->Print("pos_summary_KS.gif");  
 
 }
 
