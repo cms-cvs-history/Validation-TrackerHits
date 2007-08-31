@@ -46,6 +46,59 @@ void SiStripHitsComparePosition()
 
  rfile = new TFile(rfilename);
  cfile = new TFile(cfilename);
+
+  TLegend leg(0.3, 0.83, 0.55, 0.90);
+ //Get list of Keys from the Reference file.
+  TList* ref_list = rfile->GetListOfKeys() ;
+  if (!ref_list) {
+      std::cout<<"=========>> AutoComaprison:: There is no Keys available in the Reference file."<<std::endl;
+      exit(1) ;
+   }
+
+  //Get list of Keys from the New file.
+  TList* new_list = cfile->GetListOfKeys() ;
+  if (!new_list) {
+      std::cout<<"=========>> AutoComaprison:: There is no Keys available in New file."<<std::endl;
+      exit(1) ;
+   }
+
+
+  //Iterate on the List of Keys of the  Reference file.
+  TIter     refkey_iter( ref_list) ;
+  TKey*     ref_key ;
+  TObject*  ref_obj ;
+
+  char rver[50];
+  char cver[50];
+  while ( ref_key = (TKey*) refkey_iter() ) {
+      ref_obj = ref_key->ReadObj() ;
+      if (strcmp(ref_obj->IsA()->GetName(),"TObjString")==0) {
+
+         TObjString * rversion = dynamic_cast< TObjString*> (ref_obj);
+         sprintf(rver, "%s", rversion->GetName());
+         std::cout<<" Ref. version =" << rver<<std::endl;
+
+      }
+  }
+
+  //Iterate on the List of Keys of the  Reference file.
+  TIter     newkey_iter( new_list) ;
+  TKey*     new_key ;
+  TObject*  new_obj ;
+  while ( new_key = (TKey*) newkey_iter() ) {
+      new_obj = new_key->ReadObj() ;
+      if (strcmp(new_obj->IsA()->GetName(),"TObjString")==0) {
+
+         TObjString * cversion = dynamic_cast< TObjString*> (new_obj);
+         sprintf(cver, "%s", cversion->GetName());
+         std::cout<<" Cur version =" << cver<<std::endl;
+
+
+      }
+  }
+
+
+
  
  TH1F * hsum_st = new TH1F("ks_st", "KS summary position STRIPS", 22 , -0.05 , 1.05);
  TH1F * hsum_px = new TH1F("ks_px", "KS summary position PIXELS", 22 , -0.05 , 1.05);
@@ -83,6 +136,12 @@ void SiStripHitsComparePosition()
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
        hsum_TOB->Fill(ks[i]);
+
+       leg.Clear();
+       leg.AddEntry(rh[i],rver , "l");
+       leg.AddEntry(ch[i],cver , "l");
+       leg.Draw();
+
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
@@ -112,6 +171,12 @@ void SiStripHitsComparePosition()
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
        hsum_TIB->Fill(ks[i]);
+
+       leg.Clear();
+       leg.AddEntry(rh[i],rver , "l");
+       leg.AddEntry(ch[i],cver , "l");
+       leg.Draw();
+
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
@@ -141,6 +206,11 @@ void SiStripHitsComparePosition()
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
        hsum_TID->Fill(ks[i]);
+       leg.Clear();
+       leg.AddEntry(rh[i],rver , "l");
+       leg.AddEntry(ch[i],cver , "l");
+       leg.Draw();
+
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
@@ -170,6 +240,11 @@ void SiStripHitsComparePosition()
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
        hsum_TEC->Fill(ks[i]);
+       leg.Clear();
+       leg.AddEntry(rh[i],rver , "l");
+       leg.AddEntry(ch[i],cver , "l");
+       leg.Draw();
+
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
@@ -199,6 +274,10 @@ void SiStripHitsComparePosition()
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
        hsum_BPIX->Fill(ks[i]);
+       leg.Clear();
+       leg.AddEntry(rh[i],rver , "l");
+       leg.AddEntry(ch[i],cver , "l");
+       leg.Draw();
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
@@ -227,6 +306,11 @@ void SiStripHitsComparePosition()
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
        hsum_FPIX->Fill(ks[i]);
+       leg.Clear();
+       leg.AddEntry(rh[i],rver , "l");
+       leg.AddEntry(ch[i],cver , "l");
+       leg.Draw();
+
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
@@ -260,6 +344,11 @@ void SiStripHitsComparePosition()
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
        hsum_TOB->Fill(ks[i]);
+       leg.Clear();
+       leg.AddEntry(rh[i],rver , "l");
+       leg.AddEntry(ch[i],cver , "l");
+       leg.Draw();
+
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
@@ -289,6 +378,11 @@ void SiStripHitsComparePosition()
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
        hsum_TIB->Fill(ks[i]);
+       leg.Clear();
+       leg.AddEntry(rh[i],rver , "l");
+       leg.AddEntry(ch[i],cver , "l");
+       leg.Draw();
+
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
@@ -318,6 +412,11 @@ void SiStripHitsComparePosition()
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
        hsum_TID->Fill(ks[i]);
+       leg.Clear();
+       leg.AddEntry(rh[i],rver , "l");
+       leg.AddEntry(ch[i],cver , "l");
+       leg.Draw();
+
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
@@ -347,6 +446,11 @@ void SiStripHitsComparePosition()
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
        hsum_TEC->Fill(ks[i]);
+       leg.Clear();
+       leg.AddEntry(rh[i],rver , "l");
+       leg.AddEntry(ch[i],cver , "l");
+       leg.Draw();
+
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
@@ -376,6 +480,11 @@ void SiStripHitsComparePosition()
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
        hsum_BPIX->Fill(ks[i]);
+       leg.Clear();
+       leg.AddEntry(rh[i],rver , "l");
+       leg.AddEntry(ch[i],cver , "l");
+       leg.Draw();
+
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
@@ -404,6 +513,11 @@ void SiStripHitsComparePosition()
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
        hsum_FPIX->Fill(ks[i]);
+       leg.Clear();
+       leg.AddEntry(rh[i],rver , "l");
+       leg.AddEntry(ch[i],cver , "l");
+       leg.Draw();
+
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
@@ -437,6 +551,11 @@ void SiStripHitsComparePosition()
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
        hsum_TOB->Fill(ks[i]);
+       leg.Clear();
+       leg.AddEntry(rh[i],rver , "l");
+       leg.AddEntry(ch[i],cver , "l");
+       leg.Draw();
+
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
@@ -466,6 +585,11 @@ void SiStripHitsComparePosition()
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
        hsum_TIB->Fill(ks[i]);
+       leg.Clear();
+       leg.AddEntry(rh[i],rver , "l");
+       leg.AddEntry(ch[i],cver , "l");
+       leg.Draw();
+
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
@@ -495,6 +619,11 @@ void SiStripHitsComparePosition()
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
        hsum_TID->Fill(ks[i]);
+       leg.Clear();
+       leg.AddEntry(rh[i],rver , "l");
+       leg.AddEntry(ch[i],cver , "l");
+       leg.Draw();
+
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
@@ -524,6 +653,11 @@ void SiStripHitsComparePosition()
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
        hsum_TEC->Fill(ks[i]);
+       leg.Clear();
+       leg.AddEntry(rh[i],rver , "l");
+       leg.AddEntry(ch[i],cver , "l");
+       leg.Draw();
+
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
@@ -553,6 +687,11 @@ void SiStripHitsComparePosition()
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
        hsum_BPIX->Fill(ks[i]);
+       leg.Clear();
+       leg.AddEntry(rh[i],rver , "l");
+       leg.AddEntry(ch[i],cver , "l");
+       leg.Draw();
+
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
@@ -581,6 +720,11 @@ void SiStripHitsComparePosition()
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
        hsum_FPIX->Fill(ks[i]);
+       leg.Clear();
+       leg.AddEntry(rh[i],rver , "l");
+       leg.AddEntry(ch[i],cver , "l");
+       leg.Draw();
+
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
@@ -614,6 +758,11 @@ void SiStripHitsComparePosition()
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
        hsum_TOB->Fill(ks[i]);
+       leg.Clear();
+       leg.AddEntry(rh[i],rver , "l");
+       leg.AddEntry(ch[i],cver , "l");
+       leg.Draw();
+
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
@@ -643,6 +792,11 @@ void SiStripHitsComparePosition()
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
        hsum_TIB->Fill(ks[i]);
+       leg.Clear();
+       leg.AddEntry(rh[i],rver , "l");
+       leg.AddEntry(ch[i],cver , "l");
+       leg.Draw();
+
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
@@ -672,6 +826,11 @@ void SiStripHitsComparePosition()
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
        hsum_TID->Fill(ks[i]);
+       leg.Clear();
+       leg.AddEntry(rh[i],rver , "l");
+       leg.AddEntry(ch[i],cver , "l");
+       leg.Draw();
+
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
@@ -701,6 +860,11 @@ void SiStripHitsComparePosition()
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
        hsum_TEC->Fill(ks[i]);
+       leg.Clear();
+       leg.AddEntry(rh[i],rver , "l");
+       leg.AddEntry(ch[i],cver , "l");
+       leg.Draw();
+
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
@@ -730,6 +894,11 @@ void SiStripHitsComparePosition()
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
        hsum_BPIX->Fill(ks[i]);
+       leg.Clear();
+       leg.AddEntry(rh[i],rver , "l");
+       leg.AddEntry(ch[i],cver , "l");
+       leg.Draw();
+
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
@@ -758,6 +927,11 @@ void SiStripHitsComparePosition()
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
        hsum_FPIX->Fill(ks[i]);
+       leg.Clear();
+       leg.AddEntry(rh[i],rver , "l");
+       leg.AddEntry(ch[i],cver , "l");
+       leg.Draw();
+
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
@@ -791,6 +965,11 @@ void SiStripHitsComparePosition()
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
        hsum_TOB->Fill(ks[i]);
+       leg.Clear();
+       leg.AddEntry(rh[i],rver , "l");
+       leg.AddEntry(ch[i],cver , "l");
+       leg.Draw();
+
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
@@ -820,6 +999,11 @@ void SiStripHitsComparePosition()
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
        hsum_TIB->Fill(ks[i]);
+       leg.Clear();
+       leg.AddEntry(rh[i],rver , "l");
+       leg.AddEntry(ch[i],cver , "l");
+       leg.Draw();
+
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
@@ -849,6 +1033,11 @@ void SiStripHitsComparePosition()
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
        hsum_TID->Fill(ks[i]);
+       leg.Clear();
+       leg.AddEntry(rh[i],rver , "l");
+       leg.AddEntry(ch[i],cver , "l");
+       leg.Draw();
+
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
@@ -878,6 +1067,11 @@ void SiStripHitsComparePosition()
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
        hsum_TEC->Fill(ks[i]);
+       leg.Clear();
+       leg.AddEntry(rh[i],rver , "l");
+       leg.AddEntry(ch[i],cver , "l");
+       leg.Draw();
+
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
@@ -907,6 +1101,11 @@ void SiStripHitsComparePosition()
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
        hsum_BPIX->Fill(ks[i]);
+       leg.Clear();
+       leg.AddEntry(rh[i],rver , "l");
+       leg.AddEntry(ch[i],cver , "l");
+       leg.Draw();
+
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 
@@ -935,6 +1134,11 @@ void SiStripHitsComparePosition()
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
        hsum_FPIX->Fill(ks[i]);
+       leg.Clear();
+       leg.AddEntry(rh[i],rver , "l");
+       leg.AddEntry(ch[i],cver , "l");
+       leg.Draw();
+
      }
      if (ks[i] < 0.1) outfile << ch[i]->GetName() <<" KS probability = "<< ks[i] <<" "<<endl;
    } 

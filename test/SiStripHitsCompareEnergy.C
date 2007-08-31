@@ -15,6 +15,58 @@ void SiStripHitsCompareEnergy()
  TText* te = new TText();
  TFile * rfile = new TFile(rfilename);
  TFile * cfile = new TFile(cfilename);
+
+  TLegend leg(0.3, 0.83, 0.55, 0.90);
+ //Get list of Keys from the Reference file.
+  TList* ref_list = rfile->GetListOfKeys() ;
+  if (!ref_list) {
+      std::cout<<"=========>> AutoComaprison:: There is no Keys available in the Reference file."<<std::endl;
+      exit(1) ;
+   }
+
+  //Get list of Keys from the New file.
+  TList* new_list = cfile->GetListOfKeys() ;
+  if (!new_list) {
+      std::cout<<"=========>> AutoComaprison:: There is no Keys available in New file."<<std::endl;
+      exit(1) ;
+   }
+
+
+  //Iterate on the List of Keys of the  Reference file.
+  TIter     refkey_iter( ref_list) ;
+  TKey*     ref_key ;
+  TObject*  ref_obj ;
+
+  char rver[50];
+  char cver[50];
+  while ( ref_key = (TKey*) refkey_iter() ) {
+      ref_obj = ref_key->ReadObj() ;
+      if (strcmp(ref_obj->IsA()->GetName(),"TObjString")==0) {
+
+         TObjString * rversion = dynamic_cast< TObjString*> (ref_obj);
+         sprintf(rver, "%s", rversion->GetName());
+         std::cout<<" Ref. version =" << rver<<std::endl;
+         break;
+      }
+  }
+
+  //Iterate on the List of Keys of the  Reference file.
+  TIter     newkey_iter( new_list) ;
+  TKey*     new_key ;
+  TObject*  new_obj ;
+  while ( new_key = (TKey*) newkey_iter() ) {
+      new_obj = new_key->ReadObj() ;
+      if (strcmp(new_obj->IsA()->GetName(),"TObjString")==0) {
+
+         TObjString * cversion = dynamic_cast< TObjString*> (new_obj);
+         sprintf(cver, "%s", cversion->GetName());
+         std::cout<<" Cur version =" << cver<<std::endl;
+         break;
+
+      }
+  }
+
+
  ofstream outfile("LowKS_energy_list.dat");
 
  string statp = "KS prob";
@@ -59,6 +111,12 @@ void SiStripHitsCompareEnergy()
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
        hsum_TIB->Fill(ks1e[i]);
+       leg.Clear();
+       leg.AddEntry(rh1e[i],rver , "l");
+       leg.AddEntry(ch1e[i],cver , "l");
+       leg.Draw();
+
+
      }
 //     std::cout << " i =" << i << " KS = " << ks1e[i] << std::endl; 
      if (ks1e[i] < 0.1) outfile << ch1e[i]->GetName() <<" KS probability = "<< ks1e[i] <<" "<<endl;
@@ -83,6 +141,11 @@ void SiStripHitsCompareEnergy()
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
        hsum_TOB->Fill(ks1e[i]);
+       leg.Clear();
+       leg.AddEntry(rh1e[i],rver , "l");
+       leg.AddEntry(ch1e[i],cver , "l");
+       leg.Draw();
+
      }
      if (ks1e[i] < 0.1) outfile << ch1e[i]->GetName() <<" KS probability = "<< ks1e[i] <<" "<<endl;
    }
@@ -106,6 +169,11 @@ void SiStripHitsCompareEnergy()
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
        hsum_TID->Fill(ks1e[i]);
+       leg.Clear();
+       leg.AddEntry(rh1e[i],rver , "l");
+       leg.AddEntry(ch1e[i],cver , "l");
+       leg.Draw();
+
      }
      if (ks1e[i] < 0.1) outfile << ch1e[i]->GetName() <<" KS probability = "<< ks1e[i] <<" "<<endl;
    }
@@ -129,6 +197,11 @@ void SiStripHitsCompareEnergy()
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
        hsum_TEC->Fill(ks1e[i]);
+       leg.Clear();
+       leg.AddEntry(rh1e[i],rver , "l");
+       leg.AddEntry(ch1e[i],cver , "l");
+       leg.Draw();
+
      }
      if (ks1e[i] < 0.1) outfile << ch1e[i]->GetName() <<" KS probability = "<< ks1e[i] <<" "<<endl;
    }
@@ -152,6 +225,11 @@ void SiStripHitsCompareEnergy()
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
        hsum_BPIX->Fill(ks1e[i]);
+       leg.Clear();
+       leg.AddEntry(rh1e[i],rver , "l");
+       leg.AddEntry(ch1e[i],cver , "l");
+       leg.Draw();
+
      }
      if (ks1e[i] < 0.1) outfile << ch1e[i]->GetName() <<" KS probability = "<< ks1e[i] <<" "<<endl;
    }
@@ -175,6 +253,11 @@ void SiStripHitsCompareEnergy()
        buf>>value;
        te->DrawTextNDC(0.5,0.7, value.c_str());
        hsum_FPIX->Fill(ks1e[i]);
+       leg.Clear();
+       leg.AddEntry(rh1e[i],rver , "l");
+       leg.AddEntry(ch1e[i],cver , "l");
+       leg.Draw();
+
      }
      if (ks1e[i] < 0.1) outfile << ch1e[i]->GetName() <<" KS probability = "<< ks1e[i] <<" "<<endl;
    }
