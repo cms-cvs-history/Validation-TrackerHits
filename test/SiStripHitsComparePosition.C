@@ -45,8 +45,18 @@ void SiStripHitsComparePosition()
  delete gROOT->GetListOfFiles()->FindObject(cfilename); 
 
  rfile = new TFile(rfilename);
+ TDirectory * rdir=gDirectory; 
  cfile = new TFile(cfilename);
+ TDirectory * cdir=gDirectory; 
 
+ if(rfile->cd("DQMData/TrackerHitsV"))rfile->cd("DQMData/TrackerHitsV/TrackerHit");
+ else rfile->cd("DQMData/TrackerHit");
+ rdir=gDirectory;
+
+ if(cfile->cd("DQMData/TrackerHitsV"))cfile->cd("DQMData/TrackerHitsV/TrackerHit");
+ else cfile->cd("DQMData/TrackerHit");
+ cdir=gDirectory; 
+ 
   TLegend leg(0.3, 0.83, 0.55, 0.90);
  //Get list of Keys from the Reference file.
   TList* ref_list = rfile->GetListOfKeys() ;
@@ -117,15 +127,15 @@ void SiStripHitsComparePosition()
    system = "TOB";
    string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
    string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
-   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
+   histogram = ""+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
    for (Int_t i=0; i<12; i++) {       
      hn << histogram << i+1 <<std::endl; 
      hn >> hname;
-     rh[i] = (TH1F*)rfile->Get(hname.c_str())->Clone();
-     ch[i] = (TH1F*)cfile->Get(hname.c_str())->Clone();      
+     rh[i] = (TH1F*)rdir->Get(hname.c_str())->Clone();
+     ch[i] = (TH1F*)cdir->Get(hname.c_str())->Clone();      
      c->cd(i+1);
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
@@ -152,15 +162,15 @@ void SiStripHitsComparePosition()
    system = "TIB";
    string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
    string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
-   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
+   histogram = ""+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
    for (Int_t i=0; i<12; i++) {       
      hn << histogram << i+1 <<std::endl; 
      hn >> hname;
-     rh[i] = (TH1F*)rfile->Get(hname.c_str())->Clone();
-     ch[i] = (TH1F*)cfile->Get(hname.c_str())->Clone();      
+     rh[i] = (TH1F*)rdir->Get(hname.c_str())->Clone();
+     ch[i] = (TH1F*)cdir->Get(hname.c_str())->Clone();      
      c->cd(i+1);
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
@@ -187,15 +197,15 @@ void SiStripHitsComparePosition()
    system = "TID";
    string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
    string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
-   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
+   histogram = ""+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
    for (Int_t i=0; i<12; i++) {       
      hn << histogram << i+1 <<std::endl; 
      hn >> hname;
-     rh[i] = (TH1F*)rfile->Get(hname.c_str())->Clone();
-     ch[i] = (TH1F*)cfile->Get(hname.c_str())->Clone();      
+     rh[i] = (TH1F*)rdir->Get(hname.c_str())->Clone();
+     ch[i] = (TH1F*)cdir->Get(hname.c_str())->Clone();      
      c->cd(i+1);
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
@@ -221,15 +231,15 @@ void SiStripHitsComparePosition()
    system = "TEC";
    string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
    string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
-   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
+   histogram = ""+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
    for (Int_t i=0; i<12; i++) {       
      hn << histogram << i+1 <<std::endl; 
      hn >> hname;
-     rh[i] = (TH1F*)rfile->Get(hname.c_str())->Clone();
-     ch[i] = (TH1F*)cfile->Get(hname.c_str())->Clone();      
+     rh[i] = (TH1F*)rdir->Get(hname.c_str())->Clone();
+     ch[i] = (TH1F*)cdir->Get(hname.c_str())->Clone();      
      c->cd(i+1);
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
@@ -255,15 +265,15 @@ void SiStripHitsComparePosition()
    system = "BPIX";
    string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
    string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
-   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
+   histogram = ""+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
    for (Int_t i=0; i<12; i++) {       
      hn << histogram << i+1 <<std::endl; 
      hn >> hname;
-     rh[i] = (TH1F*)rfile->Get(hname.c_str())->Clone();
-     ch[i] = (TH1F*)cfile->Get(hname.c_str())->Clone();      
+     rh[i] = (TH1F*)rdir->Get(hname.c_str())->Clone();
+     ch[i] = (TH1F*)cdir->Get(hname.c_str())->Clone();      
      c->cd(i+1);
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
@@ -287,15 +297,15 @@ void SiStripHitsComparePosition()
    system = "FPIX";
    string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
    string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
-   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
+   histogram = ""+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
    for (Int_t i=0; i<12; i++) {       
      hn << histogram << i+1 <<std::endl; 
      hn >> hname;
-     rh[i] = (TH1F*)rfile->Get(hname.c_str())->Clone();
-     ch[i] = (TH1F*)cfile->Get(hname.c_str())->Clone();      
+     rh[i] = (TH1F*)rdir->Get(hname.c_str())->Clone();
+     ch[i] = (TH1F*)cdir->Get(hname.c_str())->Clone();      
      c->cd(i+1);
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
@@ -325,15 +335,15 @@ void SiStripHitsComparePosition()
    system = "TOB";
    string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
    string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
-   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
+   histogram = ""+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
    for (Int_t i=0; i<12; i++) {       
      hn << histogram << i+1 <<std::endl; 
      hn >> hname;
-     rh[i] = (TH1F*)rfile->Get(hname.c_str())->Clone();
-     ch[i] = (TH1F*)cfile->Get(hname.c_str())->Clone();      
+     rh[i] = (TH1F*)rdir->Get(hname.c_str())->Clone();
+     ch[i] = (TH1F*)cdir->Get(hname.c_str())->Clone();      
      c->cd(i+1);
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
@@ -359,15 +369,15 @@ void SiStripHitsComparePosition()
    system = "TIB";
    string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
    string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
-   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
+   histogram = ""+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
    for (Int_t i=0; i<12; i++) {       
      hn << histogram << i+1 <<std::endl; 
      hn >> hname;
-     rh[i] = (TH1F*)rfile->Get(hname.c_str())->Clone();
-     ch[i] = (TH1F*)cfile->Get(hname.c_str())->Clone();      
+     rh[i] = (TH1F*)rdir->Get(hname.c_str())->Clone();
+     ch[i] = (TH1F*)cdir->Get(hname.c_str())->Clone();      
      c->cd(i+1);
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
@@ -393,15 +403,15 @@ void SiStripHitsComparePosition()
    system = "TID";
    string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
    string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
-   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
+   histogram = ""+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
    for (Int_t i=0; i<12; i++) {       
      hn << histogram << i+1 <<std::endl; 
      hn >> hname;
-     rh[i] = (TH1F*)rfile->Get(hname.c_str())->Clone();
-     ch[i] = (TH1F*)cfile->Get(hname.c_str())->Clone();      
+     rh[i] = (TH1F*)rdir->Get(hname.c_str())->Clone();
+     ch[i] = (TH1F*)cdir->Get(hname.c_str())->Clone();      
      c->cd(i+1);
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
@@ -427,15 +437,15 @@ void SiStripHitsComparePosition()
    system = "TEC";
    string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
    string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
-   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
+   histogram = ""+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
    for (Int_t i=0; i<12; i++) {       
      hn << histogram << i+1 <<std::endl; 
      hn >> hname;
-     rh[i] = (TH1F*)rfile->Get(hname.c_str())->Clone();
-     ch[i] = (TH1F*)cfile->Get(hname.c_str())->Clone();      
+     rh[i] = (TH1F*)rdir->Get(hname.c_str())->Clone();
+     ch[i] = (TH1F*)cdir->Get(hname.c_str())->Clone();      
      c->cd(i+1);
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
@@ -461,15 +471,15 @@ void SiStripHitsComparePosition()
    system = "BPIX";
    string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
    string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
-   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
+   histogram = ""+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
    for (Int_t i=0; i<12; i++) {       
      hn << histogram << i+1 <<std::endl; 
      hn >> hname;
-     rh[i] = (TH1F*)rfile->Get(hname.c_str())->Clone();
-     ch[i] = (TH1F*)cfile->Get(hname.c_str())->Clone();      
+     rh[i] = (TH1F*)rdir->Get(hname.c_str())->Clone();
+     ch[i] = (TH1F*)cdir->Get(hname.c_str())->Clone();      
      c->cd(i+1);
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
@@ -494,15 +504,15 @@ void SiStripHitsComparePosition()
    system = "FPIX";
    string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
    string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
-   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
+   histogram = ""+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
    for (Int_t i=0; i<12; i++) {       
      hn << histogram << i+1 <<std::endl; 
      hn >> hname;
-     rh[i] = (TH1F*)rfile->Get(hname.c_str())->Clone();
-     ch[i] = (TH1F*)cfile->Get(hname.c_str())->Clone();      
+     rh[i] = (TH1F*)rdir->Get(hname.c_str())->Clone();
+     ch[i] = (TH1F*)cdir->Get(hname.c_str())->Clone();      
      c->cd(i+1);
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
@@ -532,15 +542,15 @@ void SiStripHitsComparePosition()
    system = "TOB";
    string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
    string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
-   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
+   histogram = ""+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
    for (Int_t i=0; i<12; i++) {       
      hn << histogram << i+1 <<std::endl; 
      hn >> hname;
-     rh[i] = (TH1F*)rfile->Get(hname.c_str())->Clone();
-     ch[i] = (TH1F*)cfile->Get(hname.c_str())->Clone();      
+     rh[i] = (TH1F*)rdir->Get(hname.c_str())->Clone();
+     ch[i] = (TH1F*)cdir->Get(hname.c_str())->Clone();      
      c->cd(i+1);
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
@@ -566,15 +576,15 @@ void SiStripHitsComparePosition()
    system = "TIB";
    string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
    string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
-   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
+   histogram = ""+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
    for (Int_t i=0; i<12; i++) {       
      hn << histogram << i+1 <<std::endl; 
      hn >> hname;
-     rh[i] = (TH1F*)rfile->Get(hname.c_str())->Clone();
-     ch[i] = (TH1F*)cfile->Get(hname.c_str())->Clone();      
+     rh[i] = (TH1F*)rdir->Get(hname.c_str())->Clone();
+     ch[i] = (TH1F*)cdir->Get(hname.c_str())->Clone();      
      c->cd(i+1);
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
@@ -600,15 +610,15 @@ void SiStripHitsComparePosition()
    system = "TID";
    string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
    string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
-   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
+   histogram = ""+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
    for (Int_t i=0; i<12; i++) {       
      hn << histogram << i+1 <<std::endl; 
      hn >> hname;
-     rh[i] = (TH1F*)rfile->Get(hname.c_str())->Clone();
-     ch[i] = (TH1F*)cfile->Get(hname.c_str())->Clone();      
+     rh[i] = (TH1F*)rdir->Get(hname.c_str())->Clone();
+     ch[i] = (TH1F*)cdir->Get(hname.c_str())->Clone();      
      c->cd(i+1);
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
@@ -634,15 +644,15 @@ void SiStripHitsComparePosition()
    system = "TEC";
    string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
    string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
-   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
+   histogram = ""+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
    for (Int_t i=0; i<12; i++) {       
      hn << histogram << i+1 <<std::endl; 
      hn >> hname;
-     rh[i] = (TH1F*)rfile->Get(hname.c_str())->Clone();
-     ch[i] = (TH1F*)cfile->Get(hname.c_str())->Clone();      
+     rh[i] = (TH1F*)rdir->Get(hname.c_str())->Clone();
+     ch[i] = (TH1F*)cdir->Get(hname.c_str())->Clone();      
      c->cd(i+1);
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
@@ -668,15 +678,15 @@ void SiStripHitsComparePosition()
    system = "BPIX";
    string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
    string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
-   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
+   histogram = ""+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
    for (Int_t i=0; i<12; i++) {       
      hn << histogram << i+1 <<std::endl; 
      hn >> hname;
-     rh[i] = (TH1F*)rfile->Get(hname.c_str())->Clone();
-     ch[i] = (TH1F*)cfile->Get(hname.c_str())->Clone();      
+     rh[i] = (TH1F*)rdir->Get(hname.c_str())->Clone();
+     ch[i] = (TH1F*)cdir->Get(hname.c_str())->Clone();      
      c->cd(i+1);
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
@@ -701,15 +711,15 @@ void SiStripHitsComparePosition()
    system = "FPIX";
    string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
    string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
-   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
+   histogram = ""+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
    for (Int_t i=0; i<12; i++) {       
      hn << histogram << i+1 <<std::endl; 
      hn >> hname;
-     rh[i] = (TH1F*)rfile->Get(hname.c_str())->Clone();
-     ch[i] = (TH1F*)cfile->Get(hname.c_str())->Clone();      
+     rh[i] = (TH1F*)rdir->Get(hname.c_str())->Clone();
+     ch[i] = (TH1F*)cdir->Get(hname.c_str())->Clone();      
      c->cd(i+1);
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
@@ -739,15 +749,15 @@ void SiStripHitsComparePosition()
    system = "TOB";
    string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
    string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
-   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
+   histogram = ""+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
    for (Int_t i=0; i<12; i++) {       
      hn << histogram << i+1 <<std::endl; 
      hn >> hname;
-     rh[i] = (TH1F*)rfile->Get(hname.c_str())->Clone();
-     ch[i] = (TH1F*)cfile->Get(hname.c_str())->Clone();      
+     rh[i] = (TH1F*)rdir->Get(hname.c_str())->Clone();
+     ch[i] = (TH1F*)cdir->Get(hname.c_str())->Clone();      
      c->cd(i+1);
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
@@ -773,15 +783,15 @@ void SiStripHitsComparePosition()
    system = "TIB";
    string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
    string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
-   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
+   histogram = ""+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
    for (Int_t i=0; i<12; i++) {       
      hn << histogram << i+1 <<std::endl; 
      hn >> hname;
-     rh[i] = (TH1F*)rfile->Get(hname.c_str())->Clone();
-     ch[i] = (TH1F*)cfile->Get(hname.c_str())->Clone();      
+     rh[i] = (TH1F*)rdir->Get(hname.c_str())->Clone();
+     ch[i] = (TH1F*)cdir->Get(hname.c_str())->Clone();      
      c->cd(i+1);
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
@@ -807,15 +817,15 @@ void SiStripHitsComparePosition()
    system = "TID";
    string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
    string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
-   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
+   histogram = ""+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
    for (Int_t i=0; i<12; i++) {       
      hn << histogram << i+1 <<std::endl; 
      hn >> hname;
-     rh[i] = (TH1F*)rfile->Get(hname.c_str())->Clone();
-     ch[i] = (TH1F*)cfile->Get(hname.c_str())->Clone();      
+     rh[i] = (TH1F*)rdir->Get(hname.c_str())->Clone();
+     ch[i] = (TH1F*)cdir->Get(hname.c_str())->Clone();      
      c->cd(i+1);
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
@@ -841,15 +851,15 @@ void SiStripHitsComparePosition()
    system = "TEC";
    string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
    string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
-   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
+   histogram = ""+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
    for (Int_t i=0; i<12; i++) {       
      hn << histogram << i+1 <<std::endl; 
      hn >> hname;
-     rh[i] = (TH1F*)rfile->Get(hname.c_str())->Clone();
-     ch[i] = (TH1F*)cfile->Get(hname.c_str())->Clone();      
+     rh[i] = (TH1F*)rdir->Get(hname.c_str())->Clone();
+     ch[i] = (TH1F*)cdir->Get(hname.c_str())->Clone();      
      c->cd(i+1);
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
@@ -875,15 +885,15 @@ void SiStripHitsComparePosition()
    system = "BPIX";
    string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
    string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
-   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
+   histogram = ""+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
    for (Int_t i=0; i<12; i++) {       
      hn << histogram << i+1 <<std::endl; 
      hn >> hname;
-     rh[i] = (TH1F*)rfile->Get(hname.c_str())->Clone();
-     ch[i] = (TH1F*)cfile->Get(hname.c_str())->Clone();      
+     rh[i] = (TH1F*)rdir->Get(hname.c_str())->Clone();
+     ch[i] = (TH1F*)cdir->Get(hname.c_str())->Clone();      
      c->cd(i+1);
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
@@ -908,15 +918,15 @@ void SiStripHitsComparePosition()
    system = "FPIX";
    string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
    string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
-   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
+   histogram = ""+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
    for (Int_t i=0; i<12; i++) {       
      hn << histogram << i+1 <<std::endl; 
      hn >> hname;
-     rh[i] = (TH1F*)rfile->Get(hname.c_str())->Clone();
-     ch[i] = (TH1F*)cfile->Get(hname.c_str())->Clone();      
+     rh[i] = (TH1F*)rdir->Get(hname.c_str())->Clone();
+     ch[i] = (TH1F*)cdir->Get(hname.c_str())->Clone();      
      c->cd(i+1);
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
@@ -946,15 +956,15 @@ void SiStripHitsComparePosition()
    system = "TOB";
    string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
    string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
-   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
+   histogram = ""+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
    for (Int_t i=0; i<12; i++) {       
      hn << histogram << i+1 <<std::endl; 
      hn >> hname;
-     rh[i] = (TH1F*)rfile->Get(hname.c_str())->Clone();
-     ch[i] = (TH1F*)cfile->Get(hname.c_str())->Clone();      
+     rh[i] = (TH1F*)rdir->Get(hname.c_str())->Clone();
+     ch[i] = (TH1F*)cdir->Get(hname.c_str())->Clone();      
      c->cd(i+1);
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
@@ -980,15 +990,15 @@ void SiStripHitsComparePosition()
    system = "TIB";
    string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
    string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
-   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
+   histogram = ""+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
    for (Int_t i=0; i<12; i++) {       
      hn << histogram << i+1 <<std::endl; 
      hn >> hname;
-     rh[i] = (TH1F*)rfile->Get(hname.c_str())->Clone();
-     ch[i] = (TH1F*)cfile->Get(hname.c_str())->Clone();      
+     rh[i] = (TH1F*)rdir->Get(hname.c_str())->Clone();
+     ch[i] = (TH1F*)cdir->Get(hname.c_str())->Clone();      
      c->cd(i+1);
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
@@ -1014,15 +1024,15 @@ void SiStripHitsComparePosition()
    system = "TID";
    string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
    string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
-   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
+   histogram = ""+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
    for (Int_t i=0; i<12; i++) {       
      hn << histogram << i+1 <<std::endl; 
      hn >> hname;
-     rh[i] = (TH1F*)rfile->Get(hname.c_str())->Clone();
-     ch[i] = (TH1F*)cfile->Get(hname.c_str())->Clone();      
+     rh[i] = (TH1F*)rdir->Get(hname.c_str())->Clone();
+     ch[i] = (TH1F*)cdir->Get(hname.c_str())->Clone();      
      c->cd(i+1);
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
@@ -1048,15 +1058,15 @@ void SiStripHitsComparePosition()
    system = "TEC";
    string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
    string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
-   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
+   histogram = ""+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
    for (Int_t i=0; i<12; i++) {       
      hn << histogram << i+1 <<std::endl; 
      hn >> hname;
-     rh[i] = (TH1F*)rfile->Get(hname.c_str())->Clone();
-     ch[i] = (TH1F*)cfile->Get(hname.c_str())->Clone();      
+     rh[i] = (TH1F*)rdir->Get(hname.c_str())->Clone();
+     ch[i] = (TH1F*)cdir->Get(hname.c_str())->Clone();      
      c->cd(i+1);
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
@@ -1082,15 +1092,15 @@ void SiStripHitsComparePosition()
    system = "BPIX";
    string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
    string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
-   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
+   histogram = ""+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
    for (Int_t i=0; i<12; i++) {       
      hn << histogram << i+1 <<std::endl; 
      hn >> hname;
-     rh[i] = (TH1F*)rfile->Get(hname.c_str())->Clone();
-     ch[i] = (TH1F*)cfile->Get(hname.c_str())->Clone();      
+     rh[i] = (TH1F*)rdir->Get(hname.c_str())->Clone();
+     ch[i] = (TH1F*)cdir->Get(hname.c_str())->Clone();      
      c->cd(i+1);
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );
@@ -1115,15 +1125,15 @@ void SiStripHitsComparePosition()
    system = "FPIX";
    string outname_eps = "pos_"+variable+"_"+system+"_KS.eps";
    string outname_gif = "pos_"+variable+"_"+system+"_KS.gif";
-   histogram = "DQMData/TrackerHit/"+system+"Hit/"+variable+"_"+system+"_";
+   histogram = ""+system+"Hit/"+variable+"_"+system+"_";
    
    TCanvas * c = new TCanvas(system.c_str(),system.c_str(),600,800);
    c->Divide(3,4);   
    for (Int_t i=0; i<12; i++) {       
      hn << histogram << i+1 <<std::endl; 
      hn >> hname;
-     rh[i] = (TH1F*)rfile->Get(hname.c_str())->Clone();
-     ch[i] = (TH1F*)cfile->Get(hname.c_str())->Clone();      
+     rh[i] = (TH1F*)rdir->Get(hname.c_str())->Clone();
+     ch[i] = (TH1F*)cdir->Get(hname.c_str())->Clone();      
      c->cd(i+1);
      if (PV->KSok(rh[i] , ch[i])) {
        ks[i] = PV->KSCompute(rh[i] , ch[i] , te );

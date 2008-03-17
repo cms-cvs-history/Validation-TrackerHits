@@ -14,8 +14,18 @@ void SiStripHitsCompareEnergy()
 
  TText* te = new TText();
  TFile * rfile = new TFile(rfilename);
+ TDirectory * rdir=gDirectory; 
  TFile * cfile = new TFile(cfilename);
+ TDirectory * cdir=gDirectory; 
 
+ if(rfile->cd("DQMData/TrackerHitsV"))rfile->cd("DQMData/TrackerHitsV/TrackerHit");
+ else rfile->cd("DQMData/TrackerHit");
+ rdir=gDirectory;
+
+ if(cfile->cd("DQMData/TrackerHitsV"))cfile->cd("DQMData/TrackerHitsV/TrackerHit");
+ else cfile->cd("DQMData/TrackerHit");
+ cdir=gDirectory; 
+ 
   TLegend leg(0.3, 0.83, 0.55, 0.90);
  //Get list of Keys from the Reference file.
   TList* ref_list = rfile->GetListOfKeys() ;
@@ -97,9 +107,9 @@ void SiStripHitsCompareEnergy()
    TH1F * rh1e[12];
    
    for (Int_t i=0; i<12; i++) {        
-     sprintf(histo,"DQMData/TrackerHit/TIBHit/Eloss_TIB_%i",i+1);
-     rh1e[i] = (TH1F*)rfile->Get(histo)->Clone();
-     ch1e[i] = (TH1F*)cfile->Get(histo)->Clone();
+     sprintf(histo,"TIBHit/Eloss_TIB_%i",i+1);
+     rh1e[i] = (TH1F*)rdir->Get(histo)->Clone();
+     ch1e[i] = (TH1F*)cdir->Get(histo)->Clone();
       
      TIB->cd(i+1);
      if (PV->KSok(rh1e[i] , ch1e[i])) {
@@ -127,9 +137,9 @@ void SiStripHitsCompareEnergy()
    TOB->Divide(3,4);
    
    for (Int_t i=0; i<12; i++) {        
-     sprintf(histo,"DQMData/TrackerHit/TOBHit/Eloss_TOB_%i",i+1);
-     rh1e[i] = (TH1F*)rfile->Get(histo)->Clone();
-     ch1e[i] = (TH1F*)cfile->Get(histo)->Clone();
+     sprintf(histo,"TOBHit/Eloss_TOB_%i",i+1);
+     rh1e[i] = (TH1F*)rdir->Get(histo)->Clone();
+     ch1e[i] = (TH1F*)cdir->Get(histo)->Clone();
       
      TOB->cd(i+1);
      if (PV->KSok(rh1e[i] , ch1e[i])) {
@@ -155,9 +165,9 @@ void SiStripHitsCompareEnergy()
    TID->Divide(3,4);
    
    for (Int_t i=0; i<12; i++) {        
-     sprintf(histo,"DQMData/TrackerHit/TIDHit/Eloss_TID_%i",i+1);
-     rh1e[i] = (TH1F*)rfile->Get(histo)->Clone();
-     ch1e[i] = (TH1F*)cfile->Get(histo)->Clone();
+     sprintf(histo,"TIDHit/Eloss_TID_%i",i+1);
+     rh1e[i] = (TH1F*)rdir->Get(histo)->Clone();
+     ch1e[i] = (TH1F*)cdir->Get(histo)->Clone();
       
      TID->cd(i+1);
      if (PV->KSok(rh1e[i] , ch1e[i])) {
@@ -183,9 +193,9 @@ void SiStripHitsCompareEnergy()
    TEC->Divide(3,4);
    
    for (Int_t i=0; i<12; i++) {        
-     sprintf(histo,"DQMData/TrackerHit/TECHit/Eloss_TEC_%i",i+1);
-     rh1e[i] = (TH1F*)rfile->Get(histo)->Clone();
-     ch1e[i] = (TH1F*)cfile->Get(histo)->Clone();
+     sprintf(histo,"TECHit/Eloss_TEC_%i",i+1);
+     rh1e[i] = (TH1F*)rdir->Get(histo)->Clone();
+     ch1e[i] = (TH1F*)cdir->Get(histo)->Clone();
       
      TEC->cd(i+1);
      if (PV->KSok(rh1e[i] , ch1e[i])) {
@@ -211,9 +221,9 @@ void SiStripHitsCompareEnergy()
    BPIX->Divide(3,4);
    
    for (Int_t i=0; i<12; i++) {        
-     sprintf(histo,"DQMData/TrackerHit/BPIXHit/Eloss_BPIX_%i",i+1);
-     rh1e[i] = (TH1F*)rfile->Get(histo)->Clone();
-     ch1e[i] = (TH1F*)cfile->Get(histo)->Clone();
+     sprintf(histo,"BPIXHit/Eloss_BPIX_%i",i+1);
+     rh1e[i] = (TH1F*)rdir->Get(histo)->Clone();
+     ch1e[i] = (TH1F*)cdir->Get(histo)->Clone();
       
      BPIX->cd(i+1);
      if (PV->KSok(rh1e[i] , ch1e[i])) {
@@ -239,9 +249,9 @@ void SiStripHitsCompareEnergy()
    FPIX->Divide(3,4);
    
    for (Int_t i=0; i<12; i++) {        
-     sprintf(histo,"DQMData/TrackerHit/FPIXHit/Eloss_FPIX_%i",i+1);
-     rh1e[i] = (TH1F*)rfile->Get(histo)->Clone();
-     ch1e[i] = (TH1F*)cfile->Get(histo)->Clone();
+     sprintf(histo,"FPIXHit/Eloss_FPIX_%i",i+1);
+     rh1e[i] = (TH1F*)rdir->Get(histo)->Clone();
+     ch1e[i] = (TH1F*)cdir->Get(histo)->Clone();
       
      FPIX->cd(i+1);
      if (PV->KSok(rh1e[i] , ch1e[i])) {
