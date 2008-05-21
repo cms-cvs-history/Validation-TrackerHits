@@ -14,18 +14,18 @@
          untracked bool PrintProvenanceInfo = false
       }
    
-   InputTag PxlBrlLowSrc = g4SimHits:g4SimHitsTrackerHitsPixelBarrelLowTof
-   InputTag PxlBrlHighSrc = g4SimHits:g4SimHitsTrackerHitsPixelBarrelHighTof
-   InputTag PxlFwdLowSrc = g4SimHits:g4SimHitsTrackerHitsPixelEndcapLowTof
-   InputTag PxlFwdHighSrc = g4SimHits:g4SimHitsTrackerHitsPixelEndcapHighTof
+   InputTag PxlBrlLowSrc = g4SimHits:TrackerHitsPixelBarrelLowTof
+   InputTag PxlBrlHighSrc = g4SimHits:TrackerHitsPixelBarrelHighTof
+   InputTag PxlFwdLowSrc = g4SimHits:TrackerHitsPixelEndcapLowTof
+   InputTag PxlFwdHighSrc = g4SimHits:TrackerHitsPixelEndcapHighTof
 
-   InputTag SiTIBLowSrc = g4SimHits:g4SimHitsTrackerHitsTIBLowTof
-   InputTag SiTIBHighSrc = g4SimHits:g4SimHitsTrackerHitsTIBHighTof
-   InputTag SiTOBLowSrc = g4SimHits:g4SimHitsTrackerHitsTOBLowTof
-   InputTag SiTOBHighSrc = g4SimHits:g4SimHitsTrackerHitsTOBHighTof
-   InputTag SiTIDLowSrc = g4SimHits:g4SimHitsTrackerHitsTIDLowTof
-   InputTag SiTIDHighSrc = g4SimHits:g4SimHitsTrackerHitsTIDHighTof
-   InputTag SiTECLowSrc = g4SimHits:g4SimHitsTrackerHitsTECLowTof
-   InputTag SiTECHighSrc = g4SimHits:g4SimHitsTrackerHitsTECHighTof
+   InputTag SiTIBLowSrc = g4SimHits:TrackerHitsTIBLowTof
+   InputTag SiTIBHighSrc = g4SimHits:TrackerHitsTIBHighTof
+   InputTag SiTOBLowSrc = g4SimHits:TrackerHitsTOBLowTof
+   InputTag SiTOBHighSrc = g4SimHits:TrackerHitsTOBHighTof
+   InputTag SiTIDLowSrc = g4SimHits:TrackerHitsTIDLowTof
+   InputTag SiTIDHighSrc = g4SimHits:TrackerHitsTIDHighTof
+   InputTag SiTECLowSrc = g4SimHits:TrackerHitsTECLowTof
+   InputTag SiTECHighSrc = g4SimHits:TrackerHitsTECHighTof
    
    }
