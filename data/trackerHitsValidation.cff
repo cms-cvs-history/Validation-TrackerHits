@@ -1,3 +1,0 @@
-include "Validation/TrackerHits/data/trackerHitsValidation.cfi"
-
-sequence trackerHitsValidation = {trackerHitsValid}
