@@ -7,7 +7,7 @@ void SiStripHitsCompareEnergy()
  gStyle->SetStatW(0.35);
  
  char*  cfilename = "TrackerHitHisto.root"; //current
- char*  rfilename = "../data/TrackerHitHisto.root";  //reference
+ char*  rfilename = "../TrackerHitHisto.root";  //reference
 
  delete gROOT->GetListOfFiles()->FindObject(rfilename);
  delete gROOT->GetListOfFiles()->FindObject(cfilename); 
@@ -18,12 +18,12 @@ void SiStripHitsCompareEnergy()
  TFile * cfile = new TFile(cfilename);
  TDirectory * cdir=gDirectory; 
 
- if(rfile->cd("DQMData/TrackerHitsV"))rfile->cd("DQMData/TrackerHitsV/TrackerHit");
- else rfile->cd("DQMData/TrackerHit");
+ if(rfile->cd("DQMData/Run 1/TrackerHitsV"))rfile->cd("DQMData/Run 1/TrackerHitsV/Run summary/TrackerHit");
+ else rfile->cd("DQMData/TrackerHitsV/TrackerHit");
  rdir=gDirectory;
 
- if(cfile->cd("DQMData/TrackerHitsV"))cfile->cd("DQMData/TrackerHitsV/TrackerHit");
- else cfile->cd("DQMData/TrackerHit");
+ if(cfile->cd("DQMData/Run 1/TrackerHitsV"))cfile->cd("DQMData/Run 1/TrackerHitsV/Run summary/TrackerHit");
+ else cfile->cd("DQMData/TrackerHitsV/TrackerHit");
  cdir=gDirectory; 
  
   TLegend leg(0.3, 0.83, 0.55, 0.90);
