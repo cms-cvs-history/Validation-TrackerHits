@@ -28,7 +28,7 @@
  std::string histogram;
  ofstream outfile("LowKS_pos_list.dat");
 
-void SiStripHitsComparePosition()
+void SiTrackerHitsComparePosition()
  {
  
  gROOT->ProcessLine(".x HistoCompare.C");
@@ -88,7 +88,7 @@ void SiStripHitsComparePosition()
          TObjString * rversion = dynamic_cast< TObjString*> (ref_obj);
          sprintf(rver, "%s", rversion->GetName());
          std::cout<<" Ref. version =" << rver<<std::endl;
-
+	 break;
       }
   }
 
@@ -103,7 +103,7 @@ void SiStripHitsComparePosition()
          TObjString * cversion = dynamic_cast< TObjString*> (new_obj);
          sprintf(cver, "%s", cversion->GetName());
          std::cout<<" Cur version =" << cver<<std::endl;
-
+	 break;
 
       }
   }

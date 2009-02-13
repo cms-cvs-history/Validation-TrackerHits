@@ -1,4 +1,4 @@
-void SiStripHitsCompareEnergy()
+void SiTrackerHitsCompareEnergy()
 {
 
  gROOT ->Reset();
